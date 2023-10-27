@@ -8,6 +8,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.digikala.navigation.SetUpNavGraph
 import com.example.digikala.ui.theme.DigikalaTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
                         //todo bottom bar
                     }
                 ) {
-
+                    SetUpNavGraph(navController = navController)
                 }
             }
         }
