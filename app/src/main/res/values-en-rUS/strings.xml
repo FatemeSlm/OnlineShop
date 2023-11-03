@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Digikala</string>
+    <string name="home">Home</string>
+    <string name="category">Categories</string>
+    <string name="cart">Cart</string>
+    <string name="profile">My Digikala</string>
+</resources>

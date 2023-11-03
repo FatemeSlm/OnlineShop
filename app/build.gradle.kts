@@ -86,13 +86,13 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     //hilt di
-    val hiltVersion = "2.44"
+    val hiltVersion = "2.48"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     ksp("com.google.dagger:hilt-compiler:$hiltVersion")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
     //compose navigation
-    implementation("androidx.navigation:navigation-compose:2.7.4")
+    implementation("androidx.navigation:navigation-compose:2.7.5")
 
     //animation
     implementation("com.airbnb.android:lottie-compose:5.2.0")
