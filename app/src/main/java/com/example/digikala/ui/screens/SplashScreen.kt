@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import com.example.digikala.R
 import com.example.digikala.navigation.Screen
 import com.example.digikala.ui.component.Loading3Dots
+import com.example.digikala.ui.theme.splashBg
 import kotlinx.coroutines.delay
 
 @Composable
@@ -33,7 +34,7 @@ fun SplashScreen(navController: NavHostController) {
 fun Splash() {
     Box(
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.primary)
+            .background(MaterialTheme.colorScheme.splashBg)
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {

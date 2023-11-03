@@ -5,6 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 
 @Composable
-fun BasketScreen(navController: NavHostController) {
-    Text(text = "BasketScreen")
+fun CartScreen(navController: NavHostController) {
+    Text(text = "CartScreen")
 }

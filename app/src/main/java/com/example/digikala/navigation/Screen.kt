@@ -4,7 +4,7 @@ sealed class Screen(val route: String) {
     data object Splash : Screen(route = "splash_screen")
     data object Home : Screen(route = "home_screen")
     data object Category : Screen(route = "category_screen")
-    data object Basket : Screen(route = "basket_screen")
+    data object Cart : Screen(route = "cart_screen")
     data object Profile : Screen(route = "profile_screen")
 
 
