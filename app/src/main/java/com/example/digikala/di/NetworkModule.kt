@@ -1,5 +1,7 @@
 package com.example.digikala.di
 
+import com.example.digikala.util.Constants.Api_Key
+import com.example.digikala.util.Constants.App_Language
 import com.example.digikala.util.Constants.Base_Url
 import com.example.digikala.util.Constants.Timeout_In_Second
 import dagger.Module
@@ -30,6 +32,12 @@ object NetworkModule {
         .connectTimeout(Timeout_In_Second, TimeUnit.SECONDS)
         .readTimeout(Timeout_In_Second, TimeUnit.SECONDS)
         .writeTimeout(Timeout_In_Second, TimeUnit.SECONDS)
+        .addInterceptor { chain ->
+            val request = chain.request().newBuilder()
+                .addHeader("x-api-key", Api_Key)
+                .addHeader("lang", App_Language)
+            chain.proceed(request.build())
+        }
         .addInterceptor(interceptor())
         .build()
 

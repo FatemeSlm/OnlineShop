@@ -1,9 +1,17 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
+
+val apikeyPropertiesFile = rootProject.file("key.properties")
+val apikeyProperties = Properties()
+apikeyProperties.load(FileInputStream(apikeyPropertiesFile))
+
 
 android {
     namespace = "com.example.digikala"
@@ -16,10 +24,16 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+
+        buildConfigField("String", "X_API_KEY", apikeyProperties["X_API_KEY"].toString())
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
