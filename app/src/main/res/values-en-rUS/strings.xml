@@ -5,4 +5,5 @@
     <string name="category">Categories</string>
     <string name="cart">Cart</string>
     <string name="profile">My Digikala</string>
+    <string name="search_in">Search In</string>
 </resources>

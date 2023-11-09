@@ -51,6 +51,7 @@ fun Home(
                 LaunchedEffect(true) {
                     viewModel.getSlider()
                 }
+                SearchBar()
                 TopSlider()
             }
         }
