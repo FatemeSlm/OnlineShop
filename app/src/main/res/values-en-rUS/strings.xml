@@ -6,4 +6,13 @@
     <string name="cart">Cart</string>
     <string name="profile">My Digikala</string>
     <string name="search_in">Search In</string>
+
+    <string name="digikala_jet">Digikala Jet</string>
+    <string name="digi_style">Digi Style</string>
+    <string name="digi_pay">Digi Pay</string>
+    <string name="pindo">Pindo</string>
+    <string name="gift_card">Gift Card</string>
+    <string name="digi_plus">Digi Plus</string>
+    <string name="digi_shopping">Month Shopping</string>
+    <string name="more">More</string>
 </resources>

@@ -5,4 +5,14 @@
     <string name="cart">سبد خرید</string>
     <string name="profile">دیجی‌کالای من</string>
     <string name="search_in">جستجو در</string>
+
+    <string name="digikala_jet">دیجی‌کالا جت</string>
+    <string name="digi_style">حراج استایل</string>
+    <string name="digi_pay">دیجی پی</string>
+    <string name="pindo">پیندو</string>
+    <string name="gift_card">کارت هدیه</string>
+    <string name="digi_plus">دیجی‌پلاس</string>
+    <string name="digi_shopping">خرید سر ماه</string>
+    <string name="more">بیشتر</string>
+
 </resources>
