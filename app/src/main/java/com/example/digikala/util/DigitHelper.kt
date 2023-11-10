@@ -7,6 +7,7 @@ object DigitHelper {
         var result = ""
         var fa = '۰'
         for (ch in englishStr) {
+            fa = ch
             when (ch) {
                 '0' -> fa = '۰'
                 '1' -> fa = '۱'
@@ -19,7 +20,7 @@ object DigitHelper {
                 '8' -> fa = '۸'
                 '9' -> fa = '۹'
             }
-            result = "$result $fa"
+            result = "$result$fa"
         }
         return result
     }
@@ -35,7 +36,7 @@ object DigitHelper {
         return digitBySeparator(persianDigit)
     }
 
-    fun applyDisCount(price: Long, discountPercent: Int): Long {
+    fun applyDiscount(price: Long, discountPercent: Int): Long {
         return if (discountPercent > 0) {
             val discountAmount = price * discountPercent / 100
             price - discountAmount

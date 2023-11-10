@@ -3,7 +3,7 @@ package com.example.digikala.ui.screens.home
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -30,7 +30,7 @@ import com.example.digikala.ui.theme.spacing
 fun AmazingShowMoreCard() {
     Card(
         modifier = Modifier
-            .size(180.dp, 375.dp)
+            .size(170.dp, 379.dp)
             .padding(
                 end = MaterialTheme.spacing.medium,
                 start = MaterialTheme.spacing.semiSmall,
@@ -44,7 +44,7 @@ fun AmazingShowMoreCard() {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxSize()
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.show_more),

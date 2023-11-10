@@ -27,6 +27,14 @@ val Typography.ExtraBoldNumber: TextStyle
         fontSize = 25.sp
     )
 
+val Typography.extraSmall: TextStyle
+    @Composable
+    get() = TextStyle(
+        fontFamily = fontStandard,
+        fontSize = 11.sp,
+        lineHeight = 25.sp
+    )
+
 // Set of Material typography styles to start with
 val Typography = Typography(
 
