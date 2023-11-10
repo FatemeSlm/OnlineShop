@@ -3,6 +3,7 @@ package com.example.digikala.repository
 import com.example.digikala.data.model.home.AmazingProduct
 import com.example.digikala.data.model.home.Category
 import com.example.digikala.data.model.home.Slider
+import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.BaseApiResponse
 import com.example.digikala.data.remote.HomeApiInterface
 import com.example.digikala.data.remote.NetworkResult
@@ -38,6 +39,11 @@ class HomeRepository @Inject constructor(private val api: HomeApiInterface) : Ba
     suspend fun getCenterBanners(): NetworkResult<List<Slider>> =
         safeApiCall {
             api.getCenterBanners()
+        }
+
+    suspend fun getBestSellerProducts(): NetworkResult<List<StoreProduct>> =
+        safeApiCall {
+            api.getBestSellerProducts()
         }
 }
 

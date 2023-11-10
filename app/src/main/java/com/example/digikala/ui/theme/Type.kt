@@ -19,7 +19,7 @@ val fontStandard = FontFamily(
     Font(R.font.iranyekan)
 )
 
-val Typography.ExtraBoldNumber: TextStyle
+val Typography.extraBoldNumber: TextStyle
     @Composable
     get() = TextStyle(
         fontFamily = fontBold,
@@ -62,14 +62,14 @@ val Typography = Typography(
     titleLarge = TextStyle(
         fontFamily = fontStandard,
         fontWeight = FontWeight.Medium,
-        fontSize = 18.sp,
+        fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     titleMedium = TextStyle(
         fontFamily = fontStandard,
         fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
+        fontSize = 14.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
