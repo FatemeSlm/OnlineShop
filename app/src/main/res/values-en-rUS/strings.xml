@@ -6,7 +6,6 @@
     <string name="cart">Cart</string>
     <string name="profile">My Digikala</string>
     <string name="search_in">Search In</string>
-
     <string name="digikala_jet">Digikala Jet</string>
     <string name="digi_style">Digi Style</string>
     <string name="digi_pay">Digi Pay</string>
@@ -20,4 +19,5 @@
     <string name="category_title">/shop by category</string>
     <string name="best_selling_products">Best selling products</string>
     <string name="most_visited_products">Most visited products</string>
+    <string name="favorite_product">Favorite products</string>
 </resources>
