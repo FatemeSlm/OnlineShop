@@ -63,7 +63,7 @@ fun BottomNavigationBar(
 
     if (showBottomBar) {
         NavigationBar(
-            modifier = modifier,
+            modifier = modifier.height(60.dp),
             containerColor = Color.White,
             tonalElevation = 5.dp
         ) {
