@@ -18,29 +18,29 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.home.AmazingProduct
 import com.example.digikala.data.remote.NetworkResult
-import com.example.digikala.ui.theme.lightRed
+import com.example.digikala.ui.theme.lightGreen
 import com.example.digikala.viewmodel.HomeViewModel
 
 @Composable
-fun AmazingOffer(
+fun SuperMarketAmazingOffer(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    var amazingProductList by remember {
+    var superMarketAmazingProductList by remember {
         mutableStateOf<List<AmazingProduct>>(emptyList())
     }
     var loading by remember {
         mutableStateOf(false)
     }
 
-    val amazingProductResult by viewModel.amazingProducts.collectAsState()
-    when (amazingProductResult) {
+    val superMarketAmazingProductResult by viewModel.superMarketAmazingProducts.collectAsState()
+    when (superMarketAmazingProductResult) {
         is NetworkResult.Success -> {
-            amazingProductList = amazingProductResult.data ?: emptyList()
+            superMarketAmazingProductList = superMarketAmazingProductResult.data ?: emptyList()
             loading = false
         }
 
         is NetworkResult.Error -> {
-            Log.e("3636", "AmazingOffer error : ${amazingProductResult.message}")
+            Log.e("3636", "SuperMarketAmazingOffer error : ${superMarketAmazingProductResult.message}")
             loading = false
         }
 
@@ -52,18 +52,18 @@ fun AmazingOffer(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.lightRed)
+            .background(MaterialTheme.colorScheme.lightGreen)
     ) {
         LazyRow(
-            modifier = Modifier.background(MaterialTheme.colorScheme.lightRed)
+            modifier = Modifier.background(MaterialTheme.colorScheme.lightGreen)
         ) {
             item {
                 AmazingOfferCard(
-                    topImageResId = R.drawable.amazings,
-                    bottomImageResId = R.drawable.box
+                    topImageResId = R.drawable.supermarketamazings,
+                    bottomImageResId = R.drawable.fresh
                 )
             }
-            items(amazingProductList){item ->
+            items(superMarketAmazingProductList){item ->
                 AmazingProduct(item)
             }
             item {
