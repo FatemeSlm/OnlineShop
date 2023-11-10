@@ -14,4 +14,5 @@ fun AppConfig(
 
 private fun getDataStoreVariables(dataStore: DataStoreViewModel) {
     App_Language = dataStore.getLanguage()
+    dataStore.saveLanguage(App_Language)
 }

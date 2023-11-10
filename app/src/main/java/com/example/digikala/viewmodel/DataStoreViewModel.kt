@@ -14,16 +14,16 @@ class DataStoreViewModel @Inject constructor(private val repository: DataStoreRe
     ViewModel() {
 
     companion object {
-        const val Language_Kay = "Language_Key"
+        const val Language_Key = "Language_Key"
     }
 
     fun saveLanguage(value: String) {
         viewModelScope.launch {
-            repository.putString(Language_Kay, value)
+            repository.putString(Language_Key, value)
         }
     }
 
      fun getLanguage(): String = runBlocking {
-         repository.getString(Language_Kay) ?: Persian_Lang
+         repository.getString(Language_Key) ?: Persian_Lang
      }
 }
