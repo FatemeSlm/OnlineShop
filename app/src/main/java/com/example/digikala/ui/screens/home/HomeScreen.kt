@@ -48,10 +48,11 @@ fun SwipeRefreshSection(viewModel: HomeViewModel, navController: NavHostControll
             item { SearchBar() }
             item { TopSlider() }
             item { ShowcaseSection(navController) }
+            item { AmazingOffer() }
         }
     }
 }
 
 private suspend fun refreshDataFromServer(viewModel: HomeViewModel) {
-    viewModel.getSlider()
+    viewModel.getAllDataFromServer()
 }

@@ -1,5 +1,6 @@
 package com.example.digikala.ui.screens.home
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -59,6 +60,7 @@ fun TopSlider(viewModel: HomeViewModel = hiltViewModel()) {
         }
 
         is NetworkResult.Error -> {
+            Log.e("3636", "TopSlider error : ${sliderResult.message}")
             loading = false;
         }
 
