@@ -20,4 +20,5 @@
     <string name="best_selling_products">Best selling products</string>
     <string name="most_visited_products">Most visited products</string>
     <string name="favorite_product">Favorite products</string>
+    <string name="most_discount_products">Most Discounted products</string>
 </resources>

@@ -29,6 +29,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     val bestSellers = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
     val mostVisited = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
     val mostFavorite = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
+    val mostDiscount = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
 
     suspend fun getAllDataFromServer() {
         viewModelScope.launch {
@@ -61,11 +62,17 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
             launch {
                 bestSellers.emit(repository.getBestSellerProducts())
             }
+
             launch {
                 mostVisited.emit(repository.getMostVisitedProducts())
             }
+
             launch {
                 mostFavorite.emit(repository.getMostFavoriteProducts())
+            }
+
+            launch {
+                mostDiscount.emit(repository.getMostDiscountedProducts())
             }
         }
 
