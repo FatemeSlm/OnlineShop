@@ -59,9 +59,9 @@ fun SwipeRefreshSection(viewModel: HomeViewModel, navController: NavHostControll
             item { SuperMarketAmazingOffer() }
             item { Category() }
             item { CenterBanner(bannerNumber = 1) }
-            item{BestSellers()}
+            item { BestSellers() }
             item { CenterBanner(bannerNumber = 2) }
-
+            item { MostVisited() }
             item { CenterBanner(bannerNumber = 3) }
 
             item { CenterBanner(bannerNumber = 4) }
