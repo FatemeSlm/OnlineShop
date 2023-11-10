@@ -2,6 +2,7 @@ package com.example.digikala.data.remote
 
 import com.example.digikala.data.model.ResponseResult
 import com.example.digikala.data.model.home.AmazingProduct
+import com.example.digikala.data.model.home.Category
 import com.example.digikala.data.model.home.Slider
 import retrofit2.Response
 import retrofit2.http.GET
@@ -19,4 +20,7 @@ interface HomeApiInterface {
 
     @GET("v1/get4Banners")
     suspend fun getProposalBanners(): Response<ResponseResult<List<Slider>>>
+
+    @GET("v1/getCategories")
+    suspend fun getCategories(): Response<ResponseResult<List<Category>>>
 }

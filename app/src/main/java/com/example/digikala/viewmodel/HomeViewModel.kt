@@ -3,6 +3,7 @@ package com.example.digikala.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.digikala.data.model.home.AmazingProduct
+import com.example.digikala.data.model.home.Category
 import com.example.digikala.data.model.home.Slider
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.repository.HomeRepository
@@ -21,6 +22,7 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
         MutableStateFlow<NetworkResult<List<AmazingProduct>>>(NetworkResult.Loading())
 
     val proposalBanner = MutableStateFlow<NetworkResult<List<Slider>>>(NetworkResult.Loading())
+    val categories = MutableStateFlow<NetworkResult<List<Category>>>(NetworkResult.Loading())
 
     suspend fun getAllDataFromServer() {
         viewModelScope.launch {
@@ -40,6 +42,10 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
 
             launch {
                 proposalBanner.emit(repository.getProposalBanners())
+            }
+
+            launch {
+                categories.emit(repository.getCategories())
             }
         }
     }
