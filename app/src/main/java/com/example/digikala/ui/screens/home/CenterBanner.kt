@@ -29,16 +29,16 @@ fun CenterBanner(
     when (centerBannerResult) {
         is NetworkResult.Success -> {
             centerBannerList = centerBannerResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "CenterBanner error : ${centerBannerResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 

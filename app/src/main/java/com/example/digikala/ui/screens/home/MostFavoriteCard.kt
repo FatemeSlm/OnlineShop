@@ -154,7 +154,7 @@ fun MostFavoriteCard(
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.SemiBold
                                 )
-                                Image(
+                                Icon(
                                     painter = painterResource(id = R.drawable.toman),
                                     contentDescription = "",
                                     modifier = Modifier
@@ -176,6 +176,7 @@ fun MostFavoriteCard(
             Divider(
                 modifier = Modifier
                     .width(1.dp)
+                    .padding(start = MaterialTheme.spacing.semiMedium)
                     .height(320.dp)
                     .alpha(0.4f),
                 color = Color.LightGray

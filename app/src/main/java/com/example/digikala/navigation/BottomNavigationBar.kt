@@ -20,13 +20,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.digikala.R
+import com.example.digikala.ui.theme.bottomBar
 import com.example.digikala.ui.theme.selectedBottomBar
 import com.example.digikala.ui.theme.unselectedBottomBar
 
 @Composable
 fun BottomNavigationBar(
     navController: NavController,
-    modifier: Modifier = Modifier,
     onItemClick: (BottomNavItem) -> Unit
 ) {
     val items = listOf(
@@ -63,8 +63,8 @@ fun BottomNavigationBar(
 
     if (showBottomBar) {
         NavigationBar(
-            modifier = modifier.height(60.dp),
-            containerColor = Color.White,
+            modifier = Modifier.height(60.dp),
+            containerColor = MaterialTheme.colorScheme.bottomBar,
             tonalElevation = 5.dp
         ) {
             items.forEachIndexed { index, item ->

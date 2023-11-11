@@ -48,16 +48,16 @@ fun Category(viewModel: HomeViewModel = hiltViewModel()) {
     when (categoryResult) {
         is NetworkResult.Success -> {
             categories = categoryResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "Category error : ${categoryResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 

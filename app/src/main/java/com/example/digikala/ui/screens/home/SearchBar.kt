@@ -41,8 +41,7 @@ fun SearchBar() {
         modifier = Modifier
             .fillMaxWidth()
             .height(65.dp)
-            .padding(LocalSpacing.current.small)
-            .background(Color.White),
+            .padding(LocalSpacing.current.small),
         elevation = CardDefaults.cardElevation(
             defaultElevation = LocalElevation.current.extraSmall
         )

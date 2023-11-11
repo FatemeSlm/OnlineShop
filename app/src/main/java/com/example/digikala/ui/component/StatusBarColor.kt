@@ -1,5 +1,6 @@
 package com.example.digikala.ui.component
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
@@ -17,6 +18,12 @@ fun StatusBarColor(
     val backStackEntry by navController.currentBackStackEntryAsState()
     val systemUiController = rememberSystemUiController()
 
+    val statusBarColor = if (isSystemInDarkTheme()) {
+        Color.Black
+    }else {
+        Color.White
+    }
+
     when (backStackEntry?.destination?.route) {
         Screen.Splash.route -> {
             SideEffect {
@@ -29,7 +36,7 @@ fun StatusBarColor(
         else -> {
             SideEffect {
                 systemUiController.setStatusBarColor(
-                    color = Color.White
+                    color = statusBarColor
                 )
             }
         }

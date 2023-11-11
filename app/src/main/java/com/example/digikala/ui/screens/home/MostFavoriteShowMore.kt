@@ -27,7 +27,7 @@ import com.example.digikala.ui.theme.spacing
 fun MostFavoriteShowMore() {
     Column(
         modifier = Modifier
-            .size(170.dp, 379.dp)
+            .size(170.dp, 320.dp)
             .background(Color.White)
             .padding(
                 end = MaterialTheme.spacing.medium,

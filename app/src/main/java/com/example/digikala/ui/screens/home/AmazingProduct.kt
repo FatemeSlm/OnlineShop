@@ -39,6 +39,7 @@ import com.example.digikala.ui.theme.darkRed
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.extraSmall
 import com.example.digikala.ui.theme.lightRed
+import com.example.digikala.ui.theme.lightRedText
 import com.example.digikala.ui.theme.roundedShape
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
@@ -76,7 +77,7 @@ fun AmazingProduct(item: AmazingProduct) {
                         .padding(start = MaterialTheme.spacing.small),
                     style = MaterialTheme.typography.extraSmall,
                     fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.lightRed
+                    color = MaterialTheme.colorScheme.lightRedText
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 Image(
@@ -168,7 +169,7 @@ fun AmazingProduct(item: AmazingProduct) {
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.SemiBold
                             )
-                            Image(
+                            Icon(
                                 painter = painterResource(id = R.drawable.toman),
                                 contentDescription = "",
                                 modifier = Modifier

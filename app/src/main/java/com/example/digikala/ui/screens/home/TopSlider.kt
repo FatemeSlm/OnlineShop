@@ -58,16 +58,16 @@ fun TopSlider(viewModel: HomeViewModel = hiltViewModel()) {
     when (sliderResult) {
         is NetworkResult.Success -> {
             sliderList = sliderResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "TopSlider error : ${sliderResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 
@@ -79,7 +79,6 @@ fun TopSlider(viewModel: HomeViewModel = hiltViewModel()) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
-                .background(Color.White)
         ) {
             Column(
                 modifier = Modifier

@@ -44,16 +44,16 @@ fun MostDiscount(
     when (mostDiscountResult) {
         is NetworkResult.Success -> {
             mostDiscountList = mostDiscountResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "MostDiscount error : ${mostDiscountResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 

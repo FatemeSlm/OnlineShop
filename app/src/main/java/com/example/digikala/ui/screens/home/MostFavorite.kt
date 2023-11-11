@@ -47,16 +47,16 @@ fun MostFavorite(
     when (mostFavoriteResult) {
         is NetworkResult.Success -> {
             mostFavoriteList = mostFavoriteResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "MostFavorite error : ${mostFavoriteResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 

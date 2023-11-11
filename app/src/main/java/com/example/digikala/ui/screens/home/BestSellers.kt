@@ -48,16 +48,16 @@ fun BestSellers(
     when (bestSellerResult) {
         is NetworkResult.Success -> {
             bestSellerList = bestSellerResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "BestSellers error : ${bestSellerResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 

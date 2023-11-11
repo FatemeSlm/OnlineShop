@@ -27,13 +27,13 @@ val ColorScheme.unselectedBottomBar: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color(0xFFA4A1A1) else Color(0xFF575A5E)
 
-val ColorScheme.searchBarBg:Color
-@Composable
-get() = if(!isSystemInDarkTheme()) Color(0XFFF1F0EE) else Color(0XFF303235)
-
-val ColorScheme.darkText:Color
+val ColorScheme.searchBarBg: Color
     @Composable
-    get() = if(!isSystemInDarkTheme()) Color(0XFF414244) else Color(0XFFD8D8D8)
+    get() = if (!isSystemInDarkTheme()) Color(0XFFF1F0EE) else Color(0XFF303235)
+
+val ColorScheme.darkText: Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0XFF414244) else Color(0XFFD8D8D8)
 
 val ColorScheme.amber: Color
     @Composable
@@ -45,15 +45,23 @@ val ColorScheme.grayCategory: Color
 
 val ColorScheme.lightRed: Color
     @Composable
-    get() = Color(0xFFEF4056)
+    get() = if (!isSystemInDarkTheme()) Color(0xFFEF4056) else Color(0xFF8D2633)
+
+val ColorScheme.lightRedText: Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0xFFEF4056) else Color(0xFFFFFFFF)
+
+val ColorScheme.bottomBar: Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0xFFFFFFFF) else Color(0xFF303235)
 
 val ColorScheme.darkRed: Color
     @Composable
     get() = Color(0xFFe6123D)
 
-val ColorScheme.semiDarkText:Color
+val ColorScheme.semiDarkText: Color
     @Composable
-    get() = if(!isSystemInDarkTheme()) Color(0XFF5C5E61) else Color(0XFFD8D8D8)
+    get() = if (!isSystemInDarkTheme()) Color(0XFF5C5E61) else Color(0XFFD8D8D8)
 
 
 val ColorScheme.darkCyan: Color
@@ -62,4 +70,4 @@ val ColorScheme.darkCyan: Color
 
 val ColorScheme.lightGreen: Color
     @Composable
-    get() = Color(0xFF86BF3C)
+    get() = if (!isSystemInDarkTheme()) Color(0xFF86BF3C) else Color(0xFF3A531A)

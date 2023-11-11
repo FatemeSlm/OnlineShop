@@ -47,16 +47,16 @@ fun MostVisited(
     when (mostVisitedResult) {
         is NetworkResult.Success -> {
             mostVisitedList = mostVisitedResult.data ?: emptyList()
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Error -> {
             Log.e("3636", "MostVisited error : ${mostVisitedResult.message}")
-            loading = false;
+            loading = false
         }
 
         is NetworkResult.Loading -> {
-            loading = true;
+            loading = true
         }
     }
 
