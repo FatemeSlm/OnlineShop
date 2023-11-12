@@ -19,6 +19,7 @@ import com.example.digikala.R
 import com.example.digikala.data.model.home.AmazingProduct
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.ui.theme.lightRed
+import com.example.digikala.util.Constants
 import com.example.digikala.viewmodel.HomeViewModel
 
 @Composable
@@ -59,7 +60,7 @@ fun AmazingOffer(
         ) {
             item {
                 AmazingOfferCard(
-                    topImageResId = R.drawable.amazings,
+                    topImageResId = amazingLogoChangeByLang(),
                     bottomImageResId = R.drawable.box
                 )
             }
@@ -71,5 +72,14 @@ fun AmazingOffer(
             }
         }
 
+    }
+}
+
+@Composable
+private fun amazingLogoChangeByLang(): Int {
+    return if (Constants.App_Language == Constants.English_Lang) {
+        R.drawable.amazing_en
+    } else {
+        R.drawable.amazings
     }
 }

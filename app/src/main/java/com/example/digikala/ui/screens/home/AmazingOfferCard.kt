@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.digikala.R
+import com.example.digikala.ui.component.IconWithRotate
 import com.example.digikala.ui.theme.spacing
 
 @Composable
@@ -74,11 +75,7 @@ fun AmazingOfferCard(
                 color = Color.White,
                 fontWeight = FontWeight.SemiBold
             )
-            Icon(
-                imageVector = Icons.Filled.KeyboardArrowLeft,
-                contentDescription = "",
-                tint = Color.White
-            )
+            IconWithRotate(imageVector = Icons.Filled.KeyboardArrowLeft)
         }
     }
 }

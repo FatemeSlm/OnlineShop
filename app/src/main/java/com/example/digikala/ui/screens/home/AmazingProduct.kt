@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -38,11 +39,11 @@ import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkRed
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.extraSmall
-import com.example.digikala.ui.theme.lightRed
 import com.example.digikala.ui.theme.lightRedText
 import com.example.digikala.ui.theme.roundedShape
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
+import com.example.digikala.util.Constants
 import com.example.digikala.util.DigitHelper.applyDiscount
 import com.example.digikala.util.DigitHelper.digitByLocate
 import com.example.digikala.util.DigitHelper.digitByLocateAndSeparator
@@ -151,7 +152,7 @@ fun AmazingProduct(item: AmazingProduct) {
                             .wrapContentHeight(Alignment.CenterVertically)
                     ) {
                         Text(
-                            text = "${digitByLocate(item.discountPercent.toString())}%",
+                            text = "${digitByLocateAndSeparator(item.discountPercent.toString())}%",
                             color = Color.White,
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold
@@ -170,7 +171,7 @@ fun AmazingProduct(item: AmazingProduct) {
                                 fontWeight = FontWeight.SemiBold
                             )
                             Icon(
-                                painter = painterResource(id = R.drawable.toman),
+                                currencyLogoChangeByLang(),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .size(MaterialTheme.spacing.semiLarge)
@@ -187,5 +188,14 @@ fun AmazingProduct(item: AmazingProduct) {
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun currencyLogoChangeByLang(): Painter {
+    return if (Constants.App_Language == Constants.English_Lang) {
+        painterResource(id = R.drawable.dollar)
+    } else {
+        painterResource(id = R.drawable.toman)
     }
 }

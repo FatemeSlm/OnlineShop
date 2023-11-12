@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.digikala.R
+import com.example.digikala.ui.component.IconWithRotate
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.lightRed
 import com.example.digikala.ui.theme.roundedShape
@@ -46,11 +47,9 @@ fun AmazingShowMoreCard() {
             verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxSize()
         ) {
-            Icon(
+            IconWithRotate(
                 painter = painterResource(id = R.drawable.show_more),
-                contentDescription = "",
-                tint = MaterialTheme.colorScheme.lightRed,
-                modifier = Modifier.size(40.dp, 40.dp)
+                tint = MaterialTheme.colorScheme.lightRed
             )
             Spacer(modifier = Modifier.height(20.dp))
             Text(

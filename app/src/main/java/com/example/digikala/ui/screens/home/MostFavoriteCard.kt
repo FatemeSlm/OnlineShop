@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,6 +40,7 @@ import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.extraSmall
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
+import com.example.digikala.util.Constants
 import com.example.digikala.util.DigitHelper
 
 @Composable
@@ -136,7 +138,7 @@ fun MostFavoriteCard(
                                 .wrapContentHeight(Alignment.CenterVertically)
                         ) {
                             Text(
-                                text = "${DigitHelper.digitByLocate(item.discountPercent.toString())}%",
+                                text = "${DigitHelper.digitByLocateAndSeparator(item.discountPercent.toString())}%",
                                 color = Color.White,
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.Bold
@@ -155,7 +157,7 @@ fun MostFavoriteCard(
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Icon(
-                                    painter = painterResource(id = R.drawable.toman),
+                                    currencyLogoChangeByLang(),
                                     contentDescription = "",
                                     modifier = Modifier
                                         .size(MaterialTheme.spacing.semiLarge)
@@ -183,5 +185,14 @@ fun MostFavoriteCard(
             )
         }
 
+    }
+}
+
+@Composable
+private fun currencyLogoChangeByLang(): Painter {
+    return if (Constants.App_Language == Constants.English_Lang) {
+        painterResource(id = R.drawable.dollar)
+    } else {
+        painterResource(id = R.drawable.toman)
     }
 }
