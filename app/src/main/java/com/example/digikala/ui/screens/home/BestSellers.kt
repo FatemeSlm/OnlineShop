@@ -27,6 +27,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.util.DigitHelper.digitByLocate
@@ -61,34 +62,38 @@ fun BestSellers(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(MaterialTheme.spacing.small)
-    ) {
-        Text(
-            text = stringResource(id = R.string.best_selling_products),
+    if (loading) {
+        Loading(height = 250.dp, isDark = true)
+    } else {
+        Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            textAlign = TextAlign.Start,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.darkText,
-        )
-        LazyHorizontalGrid(
-            rows = GridCells.Fixed(3),
-            modifier = Modifier
-                .padding(top = MaterialTheme.spacing.medium)
-                .height(250.dp),
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+                .fillMaxSize()
+                .padding(MaterialTheme.spacing.small)
         ) {
-            itemsIndexed(bestSellerList) { index, item ->
-                ProductHorizontalItem(
-                    id = digitByLocate((index +1).toString()),
-                    name = item.name,
-                    imageUrl = item.image
-                )
+            Text(
+                text = stringResource(id = R.string.best_selling_products),
+                modifier = Modifier
+                    .fillMaxWidth(),
+                textAlign = TextAlign.Start,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.darkText,
+            )
+            LazyHorizontalGrid(
+                rows = GridCells.Fixed(3),
+                modifier = Modifier
+                    .padding(top = MaterialTheme.spacing.medium)
+                    .height(250.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                itemsIndexed(bestSellerList) { index, item ->
+                    ProductHorizontalItem(
+                        id = digitByLocate((index + 1).toString()),
+                        name = item.name,
+                        imageUrl = item.image
+                    )
+                }
             }
         }
     }

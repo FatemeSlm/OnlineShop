@@ -14,10 +14,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.home.AmazingProduct
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.lightRed
 import com.example.digikala.util.Constants
 import com.example.digikala.viewmodel.HomeViewModel
@@ -50,28 +52,32 @@ fun AmazingOffer(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.lightRed)
-    ) {
-        LazyRow(
-            modifier = Modifier.background(MaterialTheme.colorScheme.lightRed)
+    if (loading) {
+        Loading(height = 400.dp, isDark = true)
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.lightRed)
         ) {
-            item {
-                AmazingOfferCard(
-                    topImageResId = amazingLogoChangeByLang(),
-                    bottomImageResId = R.drawable.box
-                )
+            LazyRow(
+                modifier = Modifier.background(MaterialTheme.colorScheme.lightRed)
+            ) {
+                item {
+                    AmazingOfferCard(
+                        topImageResId = amazingLogoChangeByLang(),
+                        bottomImageResId = R.drawable.box
+                    )
+                }
+                items(amazingProductList) { item ->
+                    AmazingProduct(item)
+                }
+                item {
+                    AmazingShowMoreCard()
+                }
             }
-            items(amazingProductList){item ->
-                AmazingProduct(item)
-            }
-            item {
-                AmazingShowMoreCard()
-            }
-        }
 
+        }
     }
 }
 

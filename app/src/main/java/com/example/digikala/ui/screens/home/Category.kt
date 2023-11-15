@@ -29,6 +29,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.digikala.R
 import com.example.digikala.data.model.home.Category
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.viewmodel.HomeViewModel
@@ -61,28 +62,33 @@ fun Category(viewModel: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(MaterialTheme.spacing.small)
-    ) {
-        Text(
-            text = stringResource(id = R.string.category_title),
+
+    if (loading) {
+        Loading(height = 200.dp, isDark = true)
+    } else {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = MaterialTheme.spacing.medium),
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.darkText
-        )
-        FlowRow(
-            horizontalArrangement = Arrangement.SpaceAround,
-            maxItemsInEachRow = 3,
-            modifier = Modifier.fillMaxWidth()
+                .padding(MaterialTheme.spacing.small)
         ) {
-            for (item in categories) {
-                CategoryItem(item)
+            Text(
+                text = stringResource(id = R.string.category_title),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = MaterialTheme.spacing.medium),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.darkText
+            )
+            FlowRow(
+                horizontalArrangement = Arrangement.SpaceAround,
+                maxItemsInEachRow = 3,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                for (item in categories) {
+                    CategoryItem(item)
+                }
             }
         }
     }

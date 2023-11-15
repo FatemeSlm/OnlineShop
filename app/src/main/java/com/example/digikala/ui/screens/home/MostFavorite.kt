@@ -22,10 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.spacing
@@ -60,40 +62,44 @@ fun MostFavorite(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(MaterialTheme.spacing.small)
-    ) {
-        Row(
+    if (loading) {
+        Loading(height = 360.dp, isDark = true)
+    } else {
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = MaterialTheme.spacing.extraSmall),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+                .fillMaxSize()
+                .padding(MaterialTheme.spacing.small)
         ) {
-            Text(
-                text = stringResource(id = R.string.favorite_product),
-                textAlign = TextAlign.Start,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.darkText,
-            )
-            Text(
-                text = stringResource(id = R.string.see_all),
-                textAlign = TextAlign.End,
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.darkCyan,
-            )
-        }
-
-        LazyRow{
-            items(mostFavoriteList){item ->
-                MostFavoriteCard(item)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = MaterialTheme.spacing.extraSmall),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(id = R.string.favorite_product),
+                    textAlign = TextAlign.Start,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.darkText,
+                )
+                Text(
+                    text = stringResource(id = R.string.see_all),
+                    textAlign = TextAlign.End,
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.darkCyan,
+                )
             }
-            item {
-                MostFavoriteShowMore()
+
+            LazyRow {
+                items(mostFavoriteList) { item ->
+                    MostFavoriteCard(item)
+                }
+                item {
+                    MostFavoriteShowMore()
+                }
             }
         }
     }

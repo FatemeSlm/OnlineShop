@@ -73,7 +73,8 @@ fun TopSlider(viewModel: HomeViewModel = hiltViewModel()) {
 
     if(loading){
         val config = LocalConfiguration.current
-        Loading(height = config.screenHeightDp.dp, isDark = true)
+//        Loading(height = config.screenHeightDp.dp, isDark = true)
+        Loading(height = 200.dp, isDark = true)
     }else{
         Column(
             modifier = Modifier

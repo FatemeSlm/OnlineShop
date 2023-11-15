@@ -20,10 +20,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.viewmodel.HomeViewModel
@@ -57,31 +59,35 @@ fun MostDiscount(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        Text(
-            text = stringResource(id = R.string.most_discount_products),
+    if (loading) {
+        Loading(height = 250.dp, isDark = true)
+    } else {
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(MaterialTheme.spacing.small),
-            textAlign = TextAlign.Start,
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.darkText,
-        )
-
-        FlowRow(
-            maxItemsInEachRow = 2,
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight(),
-            horizontalArrangement = Arrangement.Center
         ) {
+            Text(
+                text = stringResource(id = R.string.most_discount_products),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(MaterialTheme.spacing.small),
+                textAlign = TextAlign.Start,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.darkText,
+            )
 
-            for (item in mostDiscountList) {
-                MostDiscountCard(item)
+            FlowRow(
+                maxItemsInEachRow = 2,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                for (item in mostDiscountList) {
+                    MostDiscountCard(item)
+                }
             }
         }
     }

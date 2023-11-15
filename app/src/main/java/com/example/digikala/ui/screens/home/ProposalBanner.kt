@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.digikala.data.model.home.Slider
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.roundedShape
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.viewmodel.HomeViewModel
@@ -55,15 +56,19 @@ fun ProposalBanner(viewModel: HomeViewModel = hiltViewModel()) {
         }
     }
 
-    FlowRow(
-        maxItemsInEachRow = 2,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(290.dp)
-            .padding(MaterialTheme.spacing.small)
-    ) {
-        for (item in proposalBanners) {
-            BannerCard(item)
+    if(loading){
+        Loading(height = 290.dp, isDark = true)
+    }else {
+        FlowRow(
+            maxItemsInEachRow = 2,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(290.dp)
+                .padding(MaterialTheme.spacing.small)
+        ) {
+            for (item in proposalBanners) {
+                BannerCard(item)
+            }
         }
     }
 }

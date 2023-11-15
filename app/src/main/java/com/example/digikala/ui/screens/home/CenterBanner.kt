@@ -7,10 +7,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.data.model.home.Slider
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.ui.component.CenterBannerCard
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.viewmodel.HomeViewModel
 
 @Composable
@@ -42,7 +44,11 @@ fun CenterBanner(
         }
     }
 
-    if(centerBannerList.isNotEmpty()){
-        CenterBannerCard(imageUrl = centerBannerList[bannerNumber - 1].image)
+    if (loading) {
+        Loading(height = 170.dp, isDark = true)
+    } else {
+        if (centerBannerList.isNotEmpty()) {
+            CenterBannerCard(imageUrl = centerBannerList[bannerNumber - 1].image)
+        }
     }
 }

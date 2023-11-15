@@ -14,10 +14,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.home.AmazingProduct
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.lightGreen
 import com.example.digikala.util.Constants
 import com.example.digikala.viewmodel.HomeViewModel
@@ -41,7 +43,10 @@ fun SuperMarketAmazingOffer(
         }
 
         is NetworkResult.Error -> {
-            Log.e("3636", "SuperMarketAmazingOffer error : ${superMarketAmazingProductResult.message}")
+            Log.e(
+                "3636",
+                "SuperMarketAmazingOffer error : ${superMarketAmazingProductResult.message}"
+            )
             loading = false
         }
 
@@ -50,28 +55,32 @@ fun SuperMarketAmazingOffer(
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.lightGreen)
-    ) {
-        LazyRow(
-            modifier = Modifier.background(MaterialTheme.colorScheme.lightGreen)
+    if (loading) {
+        Loading(height = 400.dp, isDark = true)
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.lightGreen)
         ) {
-            item {
-                AmazingOfferCard(
-                    topImageResId = amazingLogoChangeByLang(),
-                    bottomImageResId = R.drawable.fresh
-                )
+            LazyRow(
+                modifier = Modifier.background(MaterialTheme.colorScheme.lightGreen)
+            ) {
+                item {
+                    AmazingOfferCard(
+                        topImageResId = amazingLogoChangeByLang(),
+                        bottomImageResId = R.drawable.fresh
+                    )
+                }
+                items(superMarketAmazingProductList) { item ->
+                    AmazingProduct(item)
+                }
+                item {
+                    AmazingShowMoreCard()
+                }
             }
-            items(superMarketAmazingProductList){item ->
-                AmazingProduct(item)
-            }
-            item {
-                AmazingShowMoreCard()
-            }
-        }
 
+        }
     }
 }
 
