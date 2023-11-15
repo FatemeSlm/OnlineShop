@@ -1,5 +1,6 @@
 package com.example.digikala.ui.screens.home
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,15 +31,16 @@ import com.example.digikala.ui.theme.spacing
 fun AmazingShowMoreCard() {
     Card(
         modifier = Modifier
-            .size(170.dp, 379.dp)
+            .size(170.dp, 400.dp)
             .padding(
                 end = MaterialTheme.spacing.medium,
                 start = MaterialTheme.spacing.semiSmall,
-                top = MaterialTheme.spacing.semiLarge
+                top = MaterialTheme.spacing.semiLarge,
+                bottom = MaterialTheme.spacing.semiLarge
             ),
         shape = MaterialTheme.roundedShape.small,
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = if (isSystemInDarkTheme()) Color.DarkGray else Color.White
         )
     ) {
         Column(

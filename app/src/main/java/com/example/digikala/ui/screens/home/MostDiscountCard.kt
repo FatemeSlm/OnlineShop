@@ -2,6 +2,7 @@ package com.example.digikala.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -55,7 +56,7 @@ fun MostDiscountCard(
             defaultElevation = 1.dp
         ),
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = if (isSystemInDarkTheme()) Color.DarkGray else Color.White
         )
     ) {
         Column(

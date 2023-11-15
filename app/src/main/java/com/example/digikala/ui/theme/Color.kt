@@ -29,7 +29,7 @@ val ColorScheme.unselectedBottomBar: Color
 
 val ColorScheme.searchBarBg: Color
     @Composable
-    get() = if (!isSystemInDarkTheme()) Color(0XFFF1F0EE) else Color(0XFF303235)
+    get() = if (!isSystemInDarkTheme()) Color(0xFFE7E7E6) else Color(0XFF303235)
 
 val ColorScheme.darkText: Color
     @Composable
@@ -53,7 +53,7 @@ val ColorScheme.lightRedText: Color
 
 val ColorScheme.bottomBar: Color
     @Composable
-    get() = if (!isSystemInDarkTheme()) Color(0xFFFFFFFF) else Color(0xFF303235)
+    get() = if (!isSystemInDarkTheme()) Color(0xFFFFFFFF) else Color(0xFF292B2C)
 
 val ColorScheme.darkRed: Color
     @Composable

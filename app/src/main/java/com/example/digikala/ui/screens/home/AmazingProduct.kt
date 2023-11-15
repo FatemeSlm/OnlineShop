@@ -2,6 +2,7 @@ package com.example.digikala.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,21 +46,20 @@ import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.util.Constants
 import com.example.digikala.util.DigitHelper.applyDiscount
-import com.example.digikala.util.DigitHelper.digitByLocate
 import com.example.digikala.util.DigitHelper.digitByLocateAndSeparator
 
 @Composable
 fun AmazingProduct(item: AmazingProduct) {
     Card(
         modifier = Modifier
-            .width(170.dp)
+            .size(170.dp, 400.dp)
             .padding(
                 vertical = MaterialTheme.spacing.semiLarge,
                 horizontal = MaterialTheme.spacing.semiSmall
             ),
         shape = MaterialTheme.roundedShape.small,
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = if (isSystemInDarkTheme()) Color.DarkGray else Color.White
         )
     ) {
         Column(
@@ -87,7 +87,7 @@ fun AmazingProduct(item: AmazingProduct) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(130.dp),
-                    contentScale = ContentScale.FillBounds
+                    contentScale = ContentScale.Fit
                 )
             }
 

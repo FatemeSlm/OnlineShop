@@ -2,6 +2,7 @@ package com.example.digikala.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,11 +50,10 @@ fun MostFavoriteCard(
 ) {
     Column(
         modifier = Modifier
-            .width(170.dp)
-            .background(Color.White)
+            .size(170.dp, height = 360.dp)
+            .background(if (isSystemInDarkTheme()) Color.DarkGray else Color.White)
             .padding(
                 vertical = MaterialTheme.spacing.semiLarge,
-                horizontal = MaterialTheme.spacing.semiSmall
             ),
     ) {
         Row {
@@ -73,7 +73,7 @@ fun MostFavoriteCard(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(130.dp),
-                        contentScale = ContentScale.FillBounds
+                        contentScale = ContentScale.Fit
                     )
                 }
 
@@ -178,7 +178,6 @@ fun MostFavoriteCard(
             Divider(
                 modifier = Modifier
                     .width(1.dp)
-                    .padding(start = MaterialTheme.spacing.semiMedium)
                     .height(320.dp)
                     .alpha(0.4f),
                 color = Color.LightGray
