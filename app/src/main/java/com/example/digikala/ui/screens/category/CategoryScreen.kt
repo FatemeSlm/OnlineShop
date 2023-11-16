@@ -1,4 +1,4 @@
-package com.example.digikala.ui.screens.home
+package com.example.digikala.ui.screens.category
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -7,28 +7,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.example.digikala.util.Constants.App_Language
-import com.example.digikala.util.LocaleUtils
-import com.example.digikala.viewmodel.HomeViewModel
+import com.example.digikala.ui.screens.home.SearchBar
+import com.example.digikala.viewmodel.CategoryViewModel
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
-    Home(navController = navController)
+fun CategoryScreen(navController: NavHostController) {
+    Category(navController = navController)
 }
 
 @Composable
-fun Home(
+fun Category(
     navController: NavHostController,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: CategoryViewModel = hiltViewModel()
 ) {
-    LocaleUtils.setLocale(LocalContext.current, App_Language)
 
     LaunchedEffect(true) {
         refreshDataFromServer(viewModel)
@@ -38,7 +35,7 @@ fun Home(
 }
 
 @Composable
-private fun SwipeRefreshSection(viewModel: HomeViewModel, navController: NavHostController) {
+private fun SwipeRefreshSection(viewModel: CategoryViewModel, navController: NavHostController) {
     val refreshScope = rememberCoroutineScope()
     val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = false)
     SwipeRefresh(state = swipeRefreshState, onRefresh = {
@@ -52,25 +49,11 @@ private fun SwipeRefreshSection(viewModel: HomeViewModel, navController: NavHost
                 .padding(bottom = 60.dp)
         ) {
             item { SearchBar() }
-            item { TopSlider() }
-            item { ShowcaseSection(navController) }
-            item { AmazingOffer() }
-            item { ProposalBanner() }
-            item { SuperMarketAmazingOffer() }
-            item { Category() }
-            item { CenterBanner(bannerNumber = 1) }
-            item { BestSellers() }
-            item { CenterBanner(bannerNumber = 2) }
-            item { MostFavorite() }
-            item { CenterBanner(bannerNumber = 3) }
-            item { MostVisited() }
-            item { CenterBanner(bannerNumber = 4) }
-            item { CenterBanner(bannerNumber = 5) }
-            item { MostDiscount() }
+            item{ SubCategorySection()}
         }
     }
 }
 
-private suspend fun refreshDataFromServer(viewModel: HomeViewModel) {
+private suspend fun refreshDataFromServer(viewModel: CategoryViewModel) {
     viewModel.getAllDataFromServer()
 }

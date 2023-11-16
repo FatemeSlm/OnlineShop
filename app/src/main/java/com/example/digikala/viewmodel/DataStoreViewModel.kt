@@ -25,6 +25,6 @@ class DataStoreViewModel @Inject constructor(private val repository: DataStoreRe
     }
 
      fun getLanguage(): String = runBlocking {
-         repository.getString(Language_Key) ?: English_Lang
+         repository.getString(Language_Key) ?: Persian_Lang
      }
 }
