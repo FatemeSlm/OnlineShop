@@ -49,7 +49,7 @@ private fun SwipeRefreshSection(viewModel: CategoryViewModel, navController: Nav
                 .padding(bottom = 60.dp)
         ) {
             item { SearchBar() }
-            item{ SubCategorySection()}
+            item { SubCategorySection() }
         }
     }
 }

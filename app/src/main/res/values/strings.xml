@@ -35,5 +35,7 @@
     <string name="books_and_stationery">کتاب و لوازم تحریر</string>
     <string name="sports_and_travel">ورزش و سفر</string>
 
+    <string name="cart_tab">سبد خرید</string>
+    <string name="next_cart_list">لیست خرید بعدی</string>
 
 </resources>
