@@ -1,7 +1,9 @@
-package com.example.digikala.ui.screens.home
+package com.example.digikala.ui.screens.cart
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,14 +19,18 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -40,14 +46,16 @@ import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkRed
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.extraSmall
+import com.example.digikala.ui.theme.red
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.util.Constants
 import com.example.digikala.util.DigitHelper
 
 @Composable
-fun MostDiscountCard(
-    item: StoreProduct
+fun SuggestionItemCart(
+    item: StoreProduct,
+    onAddClick: (StoreProduct) -> Unit
 ) {
     Card(
         modifier = Modifier
@@ -70,15 +78,42 @@ fun MostDiscountCard(
                     .fillMaxWidth()
                     .padding(vertical = MaterialTheme.spacing.extraSmall)
             ) {
-                Spacer(modifier = Modifier.height(10.dp))
-                Image(
-                    painter = rememberAsyncImagePainter(item.image),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(130.dp),
-                    contentScale = ContentScale.Fit
-                )
+
+                Box {
+                    Image(
+                        painter = rememberAsyncImagePainter(item.image),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(130.dp),
+                        contentScale = ContentScale.Fit
+                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .align(Alignment.BottomStart)
+                            .padding(MaterialTheme.spacing.semiMedium),
+                        horizontalAlignment = Alignment.Start,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        Surface(
+                            modifier = Modifier
+                                .padding(MaterialTheme.spacing.extraSmall)
+                                .size(26.dp)
+                                .clip(CircleShape)
+                                .border(1.dp, MaterialTheme.colorScheme.red, CircleShape)
+                                .clickable {
+                                    onAddClick(item)
+                                }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "",
+                                tint = MaterialTheme.colorScheme.red
+                            )
+                        }
+                    }
+                }
             }
             Column(
                 modifier = Modifier

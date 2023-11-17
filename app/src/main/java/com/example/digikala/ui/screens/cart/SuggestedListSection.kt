@@ -24,9 +24,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
+import com.example.digikala.data.model.cart.CartItem
+import com.example.digikala.data.model.cart.CartStatus
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
-import com.example.digikala.ui.screens.home.MostDiscountCard
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.searchBarBg
 import com.example.digikala.ui.theme.spacing
@@ -90,7 +91,20 @@ fun SuggestedListSection(
     ) {
 
         for (item in suggestedList) {
-            MostDiscountCard(item)
+            SuggestionItemCart(item) {
+                viewModel.insertCartItem(
+                    CartItem(
+                        it.id,
+                        it.name,
+                        it.seller,
+                        it.price,
+                        it.discountPercent,
+                        it.image,
+                        1,
+                        CartStatus.CURRENT_CART
+                    )
+                )
+            }
         }
     }
 
