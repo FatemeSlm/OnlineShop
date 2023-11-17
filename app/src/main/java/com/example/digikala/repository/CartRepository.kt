@@ -15,6 +15,7 @@ class CartRepository @Inject constructor(
 ) : BaseApiResponse() {
 
     val currentCartItems = dao.getAllItems(CartStatus.CURRENT_CART)
+    val nextListItems = dao.getAllItems(CartStatus.NEXT_CART)
 
     suspend fun getSuggestedItems(): NetworkResult<List<StoreProduct>> =
         safeApiCall {
@@ -23,6 +24,18 @@ class CartRepository @Inject constructor(
 
     suspend fun insertCartItem(cartItem: CartItem){
         dao.insertCartItem(cartItem)
+    }
+
+    suspend fun removeItem(cartItem: CartItem){
+        dao.removeItem(cartItem)
+    }
+
+    suspend fun updateItemCount(id:String, newCount:Int){
+        dao.updateItemCount(id, newCount)
+    }
+
+    suspend fun updateItemStatus(id:String, newStatus:CartStatus){
+        dao.updateItemStatus(id, newStatus)
     }
 
 }

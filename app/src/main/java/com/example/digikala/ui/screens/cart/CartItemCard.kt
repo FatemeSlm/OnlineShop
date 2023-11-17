@@ -42,6 +42,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.example.digikala.R
 import com.example.digikala.data.model.cart.CartItem
@@ -57,9 +58,13 @@ import com.example.digikala.ui.theme.spacing
 import com.example.digikala.ui.theme.veryExtraSmall
 import com.example.digikala.util.Constants
 import com.example.digikala.util.DigitHelper.digitByLocateAndSeparator
+import com.example.digikala.viewmodel.CartViewModel
 
 @Composable
-fun CartItemCard(item: CartItem) {
+fun CartItemCard(
+    item: CartItem,
+    viewModel: CartViewModel = hiltViewModel()
+) {
 
     var count by remember {
         mutableIntStateOf(item.count)
@@ -251,6 +256,7 @@ fun CartItemCard(item: CartItem) {
                             modifier = Modifier
                                 .clickable {
                                     count++
+                                    viewModel.updateItemCount(item.id, count)
                                 }
                         )
                         Text(
@@ -265,7 +271,11 @@ fun CartItemCard(item: CartItem) {
                             Icon(
                                 painter = painterResource(id = R.drawable.digi_trash),
                                 contentDescription = "",
-                                tint = MaterialTheme.colorScheme.red
+                                tint = MaterialTheme.colorScheme.red,
+                                modifier = Modifier
+                                    .clickable {
+                                        viewModel.removeItem(item)
+                                    }
                             )
                         } else {
                             Icon(
@@ -275,15 +285,14 @@ fun CartItemCard(item: CartItem) {
                                 modifier = Modifier
                                     .clickable {
                                         count--
+                                        viewModel.updateItemCount(item.id, count)
                                     }
                             )
                         }
-
                     }
-
                 }
 
-                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.semiLarge))
+                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.semiMedium))
 
                 Row {
                     Text(
@@ -300,26 +309,26 @@ fun CartItemCard(item: CartItem) {
                             .padding(MaterialTheme.spacing.extraSmall)
                     )
                 }
+            }
 
-                Spacer(modifier = Modifier.padding(MaterialTheme.spacing.semiLarge))
+            Spacer(modifier = Modifier.padding(MaterialTheme.spacing.small))
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.End
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.save_to_next_list),
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Light,
-                        color = MaterialTheme.colorScheme.darkCyan,
-                    )
-                    Icon(
-                        imageVector = Icons.Filled.KeyboardArrowLeft,
-                        contentDescription = "",
-                        tint = MaterialTheme.colorScheme.darkCyan
-                    )
-                }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                Text(
+                    text = stringResource(id = R.string.save_to_next_list),
+                    style = MaterialTheme.typography.titleSmall,
+                    fontWeight = FontWeight.Light,
+                    color = MaterialTheme.colorScheme.darkCyan,
+                )
+                Icon(
+                    imageVector = Icons.Filled.KeyboardArrowLeft,
+                    contentDescription = "",
+                    tint = MaterialTheme.colorScheme.darkCyan
+                )
             }
         }
     }
