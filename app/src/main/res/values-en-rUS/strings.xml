@@ -45,6 +45,11 @@
     <string name="digikala_send">Digikala send</string>
     <string name="fast_send">Fast send</string>
     <string name="save_to_next_list">Save to next shopping list</string>
+    <string name="delete_from_list">Delete from shopping list</string>
+    <string name="next_cart_list_is_empty">Your next cart list is empty!</string>
+    <string name="next_cart_list_is_empty_msg">You can put the products you have added to your shopping cart and you do not intend to buy them in the next shopping list and you can add them to the shopping cart and complete the purchase whenever you want. </string>
+    <string name="please_wait">Please wait…</string>
+
 
 
 </resources>

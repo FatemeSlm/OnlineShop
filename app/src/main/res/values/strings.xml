@@ -45,6 +45,11 @@
     <string name="digikala_send">ارسال دیجی کالا</string>
     <string name="fast_send">ارسال سریع</string>
     <string name="save_to_next_list">ذخیره در لیست خرید بعدی</string>
+    <string name="delete_from_list">حذف از لیست</string>
+    <string name="next_cart_list_is_empty">لیست خرید بعدی شما خالی است!</string>
+    <string name="next_cart_list_is_empty_msg">شما می‌توانید محصولاتی که به سبد خرید خود افزوده‌اید و فعلا قصد خرید آن‌ها را ندارید، در لیست خرید بعدی قرار داده و هر زمان مایل بودید آن‌ها را به سبد خرید اضافه کرده و خرید آن‌ها را تکمیل کنید.</string>
+    <string name="please_wait">کمی صبر کنید…</string>
+
 
 
 </resources>
