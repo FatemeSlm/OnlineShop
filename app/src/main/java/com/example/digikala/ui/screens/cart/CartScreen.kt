@@ -27,7 +27,6 @@ import com.example.digikala.R
 import com.example.digikala.ui.theme.red
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.viewmodel.CartViewModel
-import javax.annotation.meta.When
 
 @Composable
 fun CartScreen(navController: NavHostController) {
@@ -63,7 +62,6 @@ fun Cart(
                 )
             }
         ) {
-
             tabTitles.forEachIndexed { index, title ->
                 Tab(
                     selected = index == selectedTabIndex,
@@ -74,7 +72,8 @@ fun Cart(
                     unselectedContentColor = Color.Gray,
                     text = {
                         Row {
-                            Text(text = title,
+                            Text(
+                                text = title,
                                 style = MaterialTheme.typography.titleSmall,
                                 fontWeight = FontWeight.SemiBold
                             )
@@ -82,11 +81,9 @@ fun Cart(
                     }
                 )
             }
-
-
         }
 
-        when(selectedTabIndex){
+        when (selectedTabIndex) {
             0 -> ShoppingCart()
             1 -> NextShoppingList()
         }

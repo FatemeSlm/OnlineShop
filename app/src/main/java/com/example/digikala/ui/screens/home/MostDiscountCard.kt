@@ -1,5 +1,6 @@
 package com.example.digikala.ui.screens.home
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -39,6 +41,7 @@ import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkRed
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.extraSmall
+import com.example.digikala.ui.theme.searchBarBg
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.util.Constants
@@ -50,14 +53,15 @@ fun MostDiscountCard(
 ) {
     Card(
         modifier = Modifier
-            .fillMaxWidth(0.5f)
-            .padding(MaterialTheme.spacing.extraSmall),
+            .fillMaxWidth(0.5f),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 1.dp
+            defaultElevation = 0.dp
         ),
         colors = CardDefaults.cardColors(
             containerColor = if (isSystemInDarkTheme()) Color.DarkGray else Color.White
-        )
+        ),
+        border = BorderStroke(0.1.dp, MaterialTheme.colorScheme.searchBarBg),
+        shape = RoundedCornerShape(0.dp)
     ) {
         Column(
             modifier = Modifier

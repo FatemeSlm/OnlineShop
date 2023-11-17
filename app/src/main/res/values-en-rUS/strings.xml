@@ -37,5 +37,7 @@
 
     <string name="cart_tab">Cart</string>
     <string name="next_cart_list">Next Cart List</string>
+    <string name="cart_is_empty">Your cart is empty!</string>
+    <string name="suggestion_for_you">Suggestion for you</string>
 
 </resources>
