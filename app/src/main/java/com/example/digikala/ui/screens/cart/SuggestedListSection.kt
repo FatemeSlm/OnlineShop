@@ -22,12 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.digikala.R
 import com.example.digikala.data.model.cart.CartItem
 import com.example.digikala.data.model.cart.CartStatus
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.searchBarBg
 import com.example.digikala.ui.theme.spacing
@@ -65,45 +67,49 @@ fun SuggestedListSection(
         }
     }
 
-    Spacer(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(MaterialTheme.spacing.small)
-            .background(MaterialTheme.colorScheme.searchBarBg)
-    )
-    Text(
-        text = stringResource(id = R.string.suggestion_for_you),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(MaterialTheme.spacing.medium),
-        textAlign = TextAlign.Start,
-        style = MaterialTheme.typography.titleMedium,
-        fontWeight = FontWeight.SemiBold,
-        color = MaterialTheme.colorScheme.darkText,
-    )
+    if (loading) {
+        Loading(height = 200.dp, isDark = true)
+    } else {
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(MaterialTheme.spacing.small)
+                .background(MaterialTheme.colorScheme.searchBarBg)
+        )
+        Text(
+            text = stringResource(id = R.string.suggestion_for_you),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(MaterialTheme.spacing.medium),
+            textAlign = TextAlign.Start,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.darkText,
+        )
 
-    FlowRow(
-        maxItemsInEachRow = 2,
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight(),
-        horizontalArrangement = Arrangement.Start
-    ) {
+        FlowRow(
+            maxItemsInEachRow = 2,
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight(),
+            horizontalArrangement = Arrangement.Start
+        ) {
 
-        for (item in suggestedList) {
-            SuggestionItemCart(item) {
-                viewModel.insertCartItem(
-                    CartItem(
-                        it.id,
-                        it.name,
-                        it.seller,
-                        it.price,
-                        it.discountPercent,
-                        it.image,
-                        1,
-                        CartStatus.CURRENT_CART
+            for (item in suggestedList) {
+                SuggestionItemCart(item) {
+                    viewModel.insertCartItem(
+                        CartItem(
+                            it.id,
+                            it.name,
+                            it.seller,
+                            it.price,
+                            it.discountPercent,
+                            it.image,
+                            1,
+                            CartStatus.CURRENT_CART
+                        )
                     )
-                )
+                }
             }
         }
     }

@@ -9,6 +9,7 @@ import androidx.compose.ui.unit.dp
 
 data class RoundedShape(
     val extraSmall: RoundedCornerShape = RoundedCornerShape(4.dp),
+    val semiSmall: RoundedCornerShape = RoundedCornerShape(6.dp),
     val small: RoundedCornerShape = RoundedCornerShape(8.dp),
     val biggerSmall: RoundedCornerShape = RoundedCornerShape(10.dp),
     val semiMedium: RoundedCornerShape = RoundedCornerShape(14.dp),
