@@ -25,4 +25,7 @@ interface CartDao {
 
     @Query("update shopping_cart set cartStatus=:newStatus where id=:id")
     suspend fun updateItemStatus(id:String, newStatus:CartStatus)
+
+    @Query("select total(count) as count from shopping_cart where cartStatus=:status")
+    fun getItemsCount(status: CartStatus): Flow<Int>
 }

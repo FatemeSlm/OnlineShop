@@ -22,6 +22,8 @@ fun ShoppingCart(
     viewModel: CartViewModel = hiltViewModel()
 ) {
 
+    val cartDetail = viewModel.cartDetail.collectAsState()
+
     val currentCartResult by viewModel.currentCartItems.collectAsState()
     when (currentCartResult) {
         is CartState.Success -> {
@@ -39,6 +41,9 @@ fun ShoppingCart(
                 } else {
                     items(currentCardList) {
                         CartItemCard(item = it, cartStatus = CartStatus.CURRENT_CART)
+                    }
+                    item {
+                        CartPriceDetail(cartDetail.value)
                     }
                 }
             }

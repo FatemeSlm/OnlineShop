@@ -277,6 +277,7 @@ fun CartItemCard(
                                     contentDescription = "",
                                     tint = MaterialTheme.colorScheme.red,
                                     modifier = Modifier
+                                        .align(Alignment.CenterVertically)
                                         .clickable {
                                             viewModel.removeItem(item)
                                         }

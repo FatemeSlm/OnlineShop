@@ -49,6 +49,18 @@
     <string name="next_cart_list_is_empty">Your next cart list is empty!</string>
     <string name="next_cart_list_is_empty_msg">You can put the products you have added to your shopping cart and you do not intend to buy them in the next shopping list and you can add them to the shopping cart and complete the purchase whenever you want. </string>
     <string name="please_wait">Please wait…</string>
+    <string name="cart_summary">Cart summary</string>
+    <string name="dot_bullet">•</string>
+    <string name="score">Score</string>
+    <string name="digiclub_score">Digiclub score</string>
+    <string name="shipping_cost_alert">The shipping cost is calculated based on the address, delivery time, weight and volume of your shipment</string>
+    <string name="goods_price">Goods price</string>
+    <string name="goods_discount">Goods discount</string>
+    <string name="goods_total_price">Goods total price</string>
+    <string name="digiclub_description">After the return period, visit the club missions page to get points</string>
+    <string name="purchase_process">Continue purchase process</string>
+
+
 
 
 

@@ -17,6 +17,9 @@ class CartRepository @Inject constructor(
     val currentCartItems = dao.getAllItems(CartStatus.CURRENT_CART)
     val nextCardItems = dao.getAllItems(CartStatus.NEXT_CART)
 
+    val currentCartItemsCount = dao.getItemsCount(CartStatus.CURRENT_CART)
+    val nextCartItemsCount = dao.getItemsCount(CartStatus.NEXT_CART)
+
     suspend fun getSuggestedItems(): NetworkResult<List<StoreProduct>> =
         safeApiCall {
             api.getSuggestedItems()

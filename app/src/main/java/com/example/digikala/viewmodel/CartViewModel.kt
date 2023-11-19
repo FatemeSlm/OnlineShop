@@ -2,12 +2,14 @@ package com.example.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.digikala.data.model.cart.CartDetail
 import com.example.digikala.data.model.cart.CartItem
 import com.example.digikala.data.model.cart.CartStatus
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.repository.CartRepository
 import com.example.digikala.ui.screens.cart.CartState
+import com.example.digikala.util.DigitHelper.applyDiscount
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,12 +23,16 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
 
     val suggestedItems =
         MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
+    val cartDetail = MutableStateFlow(CartDetail(0, 0, 0, 0))
 
     private val _currentCartItems = MutableStateFlow<CartState<List<CartItem>>>(CartState.Loading())
     val currentCartItems: StateFlow<CartState<List<CartItem>>> = _currentCartItems
 
     private val _nextCardItems = MutableStateFlow<CartState<List<CartItem>>>(CartState.Loading())
-    val nextCartItems : StateFlow<CartState<List<CartItem>>> = _nextCardItems
+    val nextCartItems: StateFlow<CartState<List<CartItem>>> = _nextCardItems
+
+    val currentCartItemsCount = repository.currentCartItemsCount
+    val nextCartItemsCount = repository.nextCartItemsCount
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -39,6 +45,13 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
                     _currentCartItems.emit(CartState.Error(exp.toString()))
                 }
             }
+
+            launch {
+                repository.currentCartItems.collectLatest {
+                    calculateCartDetail(it)
+                }
+            }
+
             launch {
                 try {
                     repository.nextCardItems.collectLatest {
@@ -49,6 +62,19 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
                 }
             }
         }
+    }
+
+    private fun calculateCartDetail(items: List<CartItem>) {
+        var totalCount = 0
+        var totalPrice = 0L
+        var totalDiscount = 0L
+        items.forEach { item ->
+            totalPrice += item.price * item.count
+            totalDiscount += applyDiscount(item.price, item.discountPercent) * item.count
+            totalCount += item.count
+        }
+        val payablePrice: Long = totalPrice - totalDiscount
+        cartDetail.value = CartDetail(totalCount, totalPrice, totalDiscount, payablePrice)
     }
 
     fun getSuggestedList() {
