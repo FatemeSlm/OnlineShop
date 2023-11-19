@@ -321,7 +321,7 @@ fun CartItemCard(
 
                 Row {
                     Text(
-                        text = digitByLocateAndSeparator(item.price.toString()),
+                        text = digitByLocateAndSeparator((item.price * item.count).toString()),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.darkText,

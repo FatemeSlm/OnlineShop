@@ -70,7 +70,7 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
         var totalDiscount = 0L
         items.forEach { item ->
             totalPrice += item.price * item.count
-            totalDiscount += applyDiscount(item.price, item.discountPercent) * item.count
+            totalDiscount += (item.price * item.discountPercent /100) * item.count
             totalCount += item.count
         }
         val payablePrice: Long = totalPrice - totalDiscount
