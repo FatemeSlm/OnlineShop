@@ -34,10 +34,15 @@ import com.example.digikala.util.DigitHelper.digitByLocateAndSeparator
 
 @Composable
 fun CartPriceDetail(
-    item:CartDetail
+    item: CartDetail
 ) {
     Column(
-        modifier = Modifier.padding(MaterialTheme.spacing.medium)
+        modifier = Modifier.padding(
+            top = MaterialTheme.spacing.medium,
+            start = MaterialTheme.spacing.medium,
+            end = MaterialTheme.spacing.medium,
+            bottom = 100.dp
+        )
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -63,7 +68,7 @@ fun CartPriceDetail(
         PriceRow(
             title = stringResource(id = R.string.goods_discount),
             price = digitByLocateAndSeparator(item.totalDiscount.toString()),
-            discount = 1
+            discount = (1 - item.payablePrice.toDouble() / item.totalPrice.toDouble() * 100).toInt()
         )
         PriceRow(
             title = stringResource(id = R.string.goods_total_price),
@@ -101,14 +106,17 @@ fun CartPriceDetail(
                 .alpha(.6f),
             color = Color.LightGray
         )
-        DigiClubScore(7)
+        DigiClubScore(item.payablePrice)
     }
 }
 
 @Composable
 private fun DigiClubScore(
-    score: Int
+    price: Long
 ) {
+
+    val score = price / 100_000
+
     Spacer(modifier = Modifier.height(MaterialTheme.spacing.medium))
     Row(
         modifier = Modifier
@@ -159,7 +167,11 @@ private fun PriceRow(
     discount: Int = 0
 ) {
     var color = MaterialTheme.colorScheme.darkText
-    if (discount > 0) color = MaterialTheme.colorScheme.red
+    var ourPrice = price;
+    if (discount > 0) {
+        color = MaterialTheme.colorScheme.red
+        ourPrice = "(${digitByLocateAndSeparator(discount.toString())}%) $price"
+    }
 
     Row(
         modifier = Modifier
@@ -177,7 +189,7 @@ private fun PriceRow(
         )
         Row {
             Text(
-                text = price,
+                text = ourPrice,
                 style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.SemiBold,
                 color = color,

@@ -319,20 +319,36 @@ fun CartItemCard(
 
                 Spacer(modifier = Modifier.padding(MaterialTheme.spacing.semiMedium))
 
-                Row {
+                val discountAmount = (item.price * item.discountPercent / 100) * item.count
+
+                Column(
+                    verticalArrangement = Arrangement.Center
+                ) {
                     Text(
-                        text = digitByLocateAndSeparator((item.price * item.count).toString()),
-                        style = MaterialTheme.typography.bodyMedium,
+                        text = "${digitByLocateAndSeparator(discountAmount.toString())} ${
+                            stringResource(
+                                id = R.string.discount
+                            )
+                        }",
+                        style = MaterialTheme.typography.extraSmall,
                         fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.darkText,
+                        color = MaterialTheme.colorScheme.red,
                     )
-                    Icon(
-                        currencyLogoChangeByLang(),
-                        contentDescription = "",
-                        modifier = Modifier
-                            .size(MaterialTheme.spacing.semiLarge)
-                            .padding(MaterialTheme.spacing.extraSmall)
-                    )
+                    Row {
+                        Text(
+                            text = digitByLocateAndSeparator((item.price * item.count).toString()),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.darkText,
+                        )
+                        Icon(
+                            currencyLogoChangeByLang(),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(MaterialTheme.spacing.semiLarge)
+                                .padding(MaterialTheme.spacing.extraSmall)
+                        )
+                    }
                 }
             }
 
