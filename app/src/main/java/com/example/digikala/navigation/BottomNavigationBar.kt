@@ -1,5 +1,6 @@
 package com.example.digikala.navigation
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -10,23 +11,29 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.digikala.R
+import com.example.digikala.ui.screens.cart.IconWithBadge
 import com.example.digikala.ui.theme.bottomBar
 import com.example.digikala.ui.theme.selectedBottomBar
 import com.example.digikala.ui.theme.unselectedBottomBar
+import com.example.digikala.viewmodel.CartViewModel
 
 @Composable
 fun BottomNavigationBar(
     navController: NavController,
-    onItemClick: (BottomNavItem) -> Unit
+    onItemClick: (BottomNavItem) -> Unit,
+    viewModel: CartViewModel = hiltViewModel()
 ) {
     val items = listOf(
         BottomNavItem(
@@ -48,7 +55,7 @@ fun BottomNavigationBar(
             unSelectedIcon = painterResource(id = R.drawable.cart_outline)
         ),
         BottomNavItem(
-            name =stringResource(id = R.string.profile),
+            name = stringResource(id = R.string.profile),
             route = Screen.Profile.route,
             selectedIcon = painterResource(id = R.drawable.user_fill),
             unSelectedIcon = painterResource(id = R.drawable.user_outline)
@@ -66,6 +73,9 @@ fun BottomNavigationBar(
             containerColor = MaterialTheme.colorScheme.bottomBar,
             tonalElevation = 5.dp
         ) {
+
+            val cartBadge by viewModel.currentCartItemsCount.collectAsState(0)
+
             items.forEachIndexed { index, item ->
                 val selected = item.route == backStackEntry.value?.destination?.route
                 NavigationBarItem(
@@ -80,20 +90,29 @@ fun BottomNavigationBar(
                     ),
                     icon = {
                         Column(
-                            horizontalAlignment = Alignment.CenterHorizontally
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         ) {
                             if (selected) {
-                                Icon(
-                                    painter = item.selectedIcon,
-                                    contentDescription = item.name,
-                                    modifier = Modifier.height(24.dp),
-                                )
+                                if (index == 2 && cartBadge > 0) {
+                                    IconWithBadge(cartBadge, item.selectedIcon)
+                                } else {
+                                    Icon(
+                                        painter = item.selectedIcon,
+                                        contentDescription = item.name,
+                                        modifier = Modifier.height(24.dp),
+                                    )
+                                }
                             } else {
-                                Icon(
-                                    painter = item.unSelectedIcon,
-                                    contentDescription = item.name,
-                                    modifier = Modifier.height(24.dp),
-                                )
+                                if (index == 2 && cartBadge > 0) {
+                                    IconWithBadge(cartBadge, item.unSelectedIcon)
+                                } else {
+                                    Icon(
+                                        painter = item.unSelectedIcon,
+                                        contentDescription = item.name,
+                                        modifier = Modifier.height(24.dp),
+                                    )
+                                }
                             }
                             Text(
                                 text = item.name,
