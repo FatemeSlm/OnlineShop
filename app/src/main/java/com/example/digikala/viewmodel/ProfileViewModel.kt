@@ -16,6 +16,7 @@ class ProfileViewModel @Inject constructor(private val repository: ProfileReposi
     // shared view model
     var screenState by mutableStateOf(ProfileScreenState.LoginState)
     var inputPhoneState by mutableStateOf("")
+    var inputPasswordState by mutableStateOf("")
 
 
 }

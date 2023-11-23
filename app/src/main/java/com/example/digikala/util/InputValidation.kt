@@ -15,4 +15,10 @@ object InputValidation {
     fun isValidEmail(input: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(input).matches()
     }
+
+    fun isValidPassword(input: String): Boolean {
+        return input.isNotEmpty()
+                && input.isNotBlank()
+                && input.length >= 6
+    }
 }

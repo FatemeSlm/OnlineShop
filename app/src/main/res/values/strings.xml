@@ -68,6 +68,11 @@
     <string name="terms_and_rules">شرایط و قوانین</string>
     <string name="privacy_and_rules">قوانین حریم خصوصی</string>
     <string name="login_error">فرمت شماره تلفن یا ایمیل صحیح نیست.</string>
+    <string name="set_password_text">لطفا یک رمز عبور برای خود تعیین کنید و یا اگر قبلا ثبت‌نام کرده‌اید، رمز عبور خود را وارد کنید.</string>
+    <string name="set_password">رمز عبور خود را وارد کنید</string>
+    <string name="digikala_login">بزن بریم!</string>
+    <string name="password_error">اطلاعات وارد شده صحیح نیست</string>
+    <string name="password_format_error">پسورد باید حداقل 6 رقم باشد</string>
 
 
 </resources>
