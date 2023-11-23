@@ -19,6 +19,10 @@ val ColorScheme.splashBg: Color
     @Composable
     get() = Color(0xFFed1b34)
 
+val ColorScheme.CursorColor: Color
+    @Composable
+    get() = Color(0xFF018577)
+
 val ColorScheme.selectedBottomBar: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color(0xFF43474c) else Color(0xFFCFD4DA)

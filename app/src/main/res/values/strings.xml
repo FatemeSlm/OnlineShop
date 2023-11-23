@@ -61,8 +61,12 @@
     <string name="purchase_process">ادامه فرآیند خرید</string>
     <string name="discount">تومان تخفیف</string>
 
-
-
+    <string name="loginTxt">برای ورود یا ثبت نام در دیجی کالا شماره موبایل یا پست الکترونیک خود را وارد نمایید</string>
+    <string name="phone_and_email">شماره موبایل یا پست الکترونیک</string>
+    <string name="digikala_entry">ورود به دیجی کالا</string>
+    <string name="terms_and_rules_full">با ورود و یا ثبت نام در دیجی کالا شما شرایط و قوانین استفاده از سرویس های سایت دیجی کالا و قوانین حریم خصوصی آن را می پذیرید.</string>
+    <string name="terms_and_rules">شرایط و قوانین</string>
+    <string name="privacy_and_rules">قوانین حریم خصوصی</string>
 
 
 </resources>

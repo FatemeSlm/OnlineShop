@@ -61,8 +61,12 @@
     <string name="purchase_process">Continue purchase process</string>
     <string name="discount">Dollars Discount</string>
 
-
-
+    <string name="loginTxt">Enter your mobile number or email to log in or register in Digikala</string>
+    <string name="phone_and_email">Mobile number or email</string>
+    <string name="digikala_entry">Login to Digikala</string>
+    <string name="terms_and_rules_full">By logging in or registering at DigiKala, you accept the terms and conditions of using DigiKala website services and its privacy rules.</string>
+    <string name="terms_and_rules">Terms and Rules</string>
+    <string name="privacy_and_rules">Privacy Rules</string>
 
 
 </resources>
