@@ -67,6 +67,7 @@
     <string name="terms_and_rules_full">با ورود و یا ثبت نام در دیجی کالا شما شرایط و قوانین استفاده از سرویس های سایت دیجی کالا و قوانین حریم خصوصی آن را می پذیرید.</string>
     <string name="terms_and_rules">شرایط و قوانین</string>
     <string name="privacy_and_rules">قوانین حریم خصوصی</string>
+    <string name="login_error">فرمت شماره تلفن یا ایمیل صحیح نیست.</string>
 
 
 </resources>

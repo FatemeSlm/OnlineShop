@@ -25,11 +25,11 @@ import com.example.digikala.ui.theme.spacing
 fun MyTextField(
     value: String,
     placeHolder: String,
-    onValueChange: () -> Unit
+    onValueChange: (it: String) -> Unit
 ) {
     TextField(
         value = value,
-        onValueChange = { onValueChange() },
+        onValueChange = { onValueChange(it) },
         modifier = Modifier
             .fillMaxWidth()
             .height(92.dp)

@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.digikala.ui.theme.red
 import com.example.digikala.ui.theme.roundedShape
@@ -24,7 +25,6 @@ fun MyButton(
         onClick = { onClick() },
         colors = ButtonDefaults.buttonColors(
             backgroundColor = MaterialTheme.colorScheme.red,
-            contentColor = Color.White
         ),
         modifier = Modifier
             .fillMaxWidth()
@@ -38,7 +38,9 @@ fun MyButton(
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleMedium,
+            color = Color.White,
+            fontWeight = FontWeight.SemiBold
         )
     }
 }

@@ -67,6 +67,6 @@
     <string name="terms_and_rules_full">By logging in or registering at DigiKala, you accept the terms and conditions of using DigiKala website services and its privacy rules.</string>
     <string name="terms_and_rules">Terms and Rules</string>
     <string name="privacy_and_rules">Privacy Rules</string>
-
+    <string name="login_error">The phone number or email format is not correct.</string>
 
 </resources>
