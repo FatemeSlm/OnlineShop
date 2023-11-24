@@ -32,13 +32,15 @@ import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.selectedBottomBar
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.util.InputValidation.isValidPassword
+import com.example.digikala.viewmodel.DataStoreViewModel
 import com.example.digikala.viewmodel.ProfileViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun RegisterScreen(
-    viewModel: ProfileViewModel = hiltViewModel()
+    viewModel: ProfileViewModel = hiltViewModel(),
+    dataStore: DataStoreViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
 
@@ -47,8 +49,13 @@ fun RegisterScreen(
             when (loginResponse) {
                 is NetworkResult.Success -> {
 
-                    loginResponse.data?.let {
-                        if (it.token.isNotEmpty()) {
+                    loginResponse.data?.let { user ->
+                        if (user.token.isNotEmpty()) {
+                            dataStore.saveUserToken(user.token)
+                            dataStore.saveUserId(user.id)
+                            dataStore.saveUserPhone(user.phone)
+                            dataStore.saveUserPassword(viewModel.inputPasswordState)
+
                             viewModel.screenState = ProfileScreenState.ProfileState
                         }
                     }
