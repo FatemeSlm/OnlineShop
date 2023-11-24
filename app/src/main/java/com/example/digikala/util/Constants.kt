@@ -9,6 +9,8 @@ object Constants {
     const val Timeout_In_Second: Long = 60
     const val Base_Url = "https://dig-za0p.onrender.com/api/"
     const val Api_Key = BuildConfig.X_API_KEY
+    const val Key = BuildConfig.KEY
+    const val Iv = BuildConfig.IV
     const val Shopping_Cart_Table = "shopping_cart"
     const val Database_Name = "app_db"
 

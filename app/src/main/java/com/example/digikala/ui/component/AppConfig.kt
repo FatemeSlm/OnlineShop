@@ -22,29 +22,31 @@ fun AppConfig(
 ) {
     getDataStoreVariables(dataStore)
 
-    profileViewModel.refreshToken(User_Phone, User_Password)
+    if (User_Phone.isNotBlank() && User_Password.isNotBlank()) {
 
-    LaunchedEffect(Dispatchers.Main) {
-        profileViewModel.loginResponse.collectLatest { loginResponse ->
-            when (loginResponse) {
-                is NetworkResult.Success -> {
-                    loginResponse.data?.let { user ->
-                        if (user.token.isNotEmpty()) {
-                            dataStore.saveUserToken(user.token)
-                            dataStore.saveUserId(user.id)
-                            dataStore.saveUserPhone(user.phone)
-                            dataStore.saveUserPassword(User_Password)
+        profileViewModel.refreshToken(User_Phone, User_Password)
 
-                            getDataStoreVariables(dataStore)
-                            Log.e("3636", "refresh token")
+        LaunchedEffect(Dispatchers.Main) {
+            profileViewModel.loginResponse.collectLatest { loginResponse ->
+                when (loginResponse) {
+                    is NetworkResult.Success -> {
+                        loginResponse.data?.let { user ->
+                            if (user.token.isNotEmpty()) {
+                                dataStore.saveUserToken(user.token)
+                                dataStore.saveUserId(user.id)
+                                dataStore.saveUserPhone(user.phone)
+                                dataStore.saveUserPassword(User_Password)
+
+                                getDataStoreVariables(dataStore)
+                                Log.e("3636", "refresh token")
+                            }
                         }
                     }
-                }
 
-                else -> {}
+                    else -> {}
+                }
             }
         }
-
     }
 }
 
@@ -52,8 +54,8 @@ private fun getDataStoreVariables(dataStore: DataStoreViewModel) {
     App_Language = dataStore.getLanguage()
     dataStore.saveLanguage(App_Language)
 
-    User_Phone = dataStore.getUserPhone().toString()
-    User_Password = dataStore.getUserPassword().toString()
-    User_Id = dataStore.getUserId().toString()
-    User_Token = dataStore.getUserToken().toString()
+    User_Phone = dataStore.getUserPhone() ?: ""
+    User_Password = dataStore.getUserPassword() ?: ""
+    User_Id = dataStore.getUserId() ?: ""
+    User_Token = dataStore.getUserToken() ?: ""
 }
