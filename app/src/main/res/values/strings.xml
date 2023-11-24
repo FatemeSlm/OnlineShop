@@ -74,5 +74,16 @@
     <string name="password_error">اطلاعات وارد شده صحیح نیست</string>
     <string name="password_format_error">پسورد باید حداقل 6 رقم باشد</string>
 
+    <string name="digikala_score">امتیاز دیجی‌کالا</string>
+    <string name="digikala_wallet_active">فعال‌سازی کیف پول</string>
+    <string name="auth">احراز هویت</string>
+    <string name="club">دیجی ‌کلاب</string>
+    <string name="contact_us">تماس با ما</string>
+    <string name="my_orders">سفارش‌های من</string>
+    <string name="unpaid">در انتظار پرداخت</string>
+    <string name="processing">در حال پردازش</string>
+    <string name="returned">مرجوع شده</string>
+    <string name="canceled">لغو شده</string>
+    <string name="delivered">تحویل شده</string>
 
 </resources>

@@ -74,5 +74,17 @@
     <string name="password_error">The information entered is not correct</string>
     <string name="password_format_error">Password must be at least 6 digits</string>
 
+    <string name="digikala_score">Digikala score</string>
+    <string name="digikala_wallet_active">Activate wallet</string>
+    <string name="auth">Authentication</string>
+    <string name="club">Digi Club</string>
+    <string name="contact_us">Contact us</string>
+    <string name="my_orders">My Orders</string>
+    <string name="unpaid">Pending payment</string>
+    <string name="processing">Processing</string>
+    <string name="returned">Returned</string>
+    <string name="canceled">Cancelled</string>
+    <string name="delivered">Delivered</string>
+
 
 </resources>
