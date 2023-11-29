@@ -85,5 +85,9 @@
     <string name="returned">مرجوع شده</string>
     <string name="canceled">لغو شده</string>
     <string name="delivered">تحویل شده</string>
+    <string name="fav_list">لیست مورد علاقه</string>
+    <string name="my_comments">نقد و نظرات</string>
+    <string name="addresses">آدرس ها</string>
+    <string name="profile_data">اطلاعات حساب کاربری</string>
 
 </resources>

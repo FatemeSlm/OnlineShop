@@ -84,8 +84,34 @@ fun Profile() {
         item { ProfileMiddleSection() }
         item { ProfileMyOrders() }
         item { CenterBannerCard(painter = painterResource(id = R.drawable.digiclub1)) }
+        item { ProfileMenuSection() }
         item { CenterBannerCard(painter = painterResource(id = R.drawable.digiclub2)) }
     }
+}
+
+@Composable
+private fun ProfileMenuSection() {
+    MenuRowItem(
+        painter = painterResource(id = R.drawable.digi_plus_icon),
+        text = stringResource(id = R.string.digi_plus)
+    )
+    MenuRowItem(
+        painter = painterResource(id = R.drawable.digi_fav_icon),
+        text = stringResource(id = R.string.fav_list)
+    )
+    MenuRowItem(
+        painter = painterResource(id = R.drawable.digi_comments_icon),
+        text = stringResource(id = R.string.my_comments)
+    )
+    MenuRowItem(
+        painter = painterResource(id = R.drawable.digi_adresses_icon),
+        text = stringResource(id = R.string.addresses)
+    )
+    MenuRowItem(
+        painter = painterResource(id = R.drawable.digi_profile_icon),
+        text = stringResource(id = R.string.profile_data),
+        isHaveDivider = false
+    )
 }
 
 @Composable

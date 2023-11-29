@@ -23,6 +23,10 @@ val ColorScheme.CursorColor: Color
     @Composable
     get() = Color(0xFF018577)
 
+val ColorScheme.settingArrow: Color
+    @Composable
+    get() = if (!isSystemInDarkTheme()) Color(0xFF9E9FB1) else Color(0xFFD8D8D8)
+
 val ColorScheme.selectedBottomBar: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color(0xFF43474c) else Color(0xFFCFD4DA)
