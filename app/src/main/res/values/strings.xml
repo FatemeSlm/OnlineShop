@@ -89,5 +89,8 @@
     <string name="my_comments">نقد و نظرات</string>
     <string name="addresses">آدرس ها</string>
     <string name="profile_data">اطلاعات حساب کاربری</string>
+    <string name="login_or_register">ورود یا ثبت نام</string>
+    <string name="login_or_register_msg">برای تجربه بهتر خرید و بررسی روش ارسال کالاها لطفا وارد شوید.</string>
+
 
 </resources>

@@ -13,25 +13,36 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.digikala.data.model.cart.CartStatus
 import com.example.digikala.ui.component.Loading
+import com.example.digikala.util.Constants
 import com.example.digikala.viewmodel.CartViewModel
 
 @Composable
 fun NextShoppingList(
+    navController: NavHostController,
     viewModel: CartViewModel = hiltViewModel()
 ) {
 
     val nextCartResult by viewModel.nextCartItems.collectAsState()
-    when(nextCartResult){
-        is CartState.Success -> {
-            val nextCartList = nextCartResult.data ?: emptyList()
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentHeight()
-                    .padding(bottom = 60.dp)
-            ) {
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(bottom = 60.dp)
+    ) {
+
+        item {
+            if (Constants.User_Token.isEmpty()) {
+                LoginOrRegisterSection(navController)
+            }
+        }
+
+        when (nextCartResult) {
+            is CartState.Success -> {
+                val nextCartList = nextCartResult.data ?: emptyList()
                 if (nextCartList.isEmpty()) {
                     item { EmptyNextShoppingList() }
                 } else {
@@ -39,15 +50,20 @@ fun NextShoppingList(
                         CartItemCard(item = it, cartStatus = CartStatus.NEXT_CART)
                     }
                 }
-
             }
-        }
-        is CartState.Error -> {
-            Log.e("3636", "NextShoppingList ${nextCartResult.error}")
-        }
 
-        is CartState.Loading -> {
-            Loading(height = LocalConfiguration.current.screenHeightDp.dp - 60.dp, isDark = true)
+            is CartState.Error -> {
+                Log.e("3636", "NextShoppingList ${nextCartResult.error}")
+            }
+
+            is CartState.Loading -> {
+                item {
+                    Loading(
+                        height = LocalConfiguration.current.screenHeightDp.dp - 60.dp,
+                        isDark = true
+                    )
+                }
+            }
         }
     }
 }

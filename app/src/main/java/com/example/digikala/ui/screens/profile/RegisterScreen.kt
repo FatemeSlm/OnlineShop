@@ -32,6 +32,7 @@ import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.selectedBottomBar
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.util.Constants.User_Phone
+import com.example.digikala.util.Constants.User_Token
 import com.example.digikala.util.InputValidation.isValidPassword
 import com.example.digikala.viewmodel.DataStoreViewModel
 import com.example.digikala.viewmodel.ProfileViewModel
@@ -53,6 +54,7 @@ fun RegisterScreen(
                     loginResponse.data?.let { user ->
                         if (user.token.isNotEmpty()) {
                             dataStore.saveUserToken(user.token)
+                            User_Token = user.token
                             dataStore.saveUserId(user.id)
                             dataStore.saveUserPhone(user.phone)
                             User_Phone = user.phone

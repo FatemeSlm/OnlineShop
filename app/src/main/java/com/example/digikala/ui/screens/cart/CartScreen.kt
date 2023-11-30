@@ -100,8 +100,8 @@ fun Cart(
         }
 
         when (selectedTabIndex) {
-            0 -> ShoppingCart()
-            1 -> NextShoppingList()
+            0 -> ShoppingCart(navController)
+            1 -> NextShoppingList(navController)
         }
     }
 }

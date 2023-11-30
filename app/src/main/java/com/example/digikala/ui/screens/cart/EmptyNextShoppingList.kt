@@ -24,10 +24,17 @@ import com.example.digikala.R
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
+import com.example.digikala.util.Constants.User_Token
 
 @Composable
 fun EmptyNextShoppingList() {
     val config = LocalConfiguration.current
+
+    var verticalArrangement: Arrangement.Vertical = Arrangement.Center
+
+    if (User_Token.isEmpty()) {
+        verticalArrangement = Arrangement.Top
+    }
 
     Column(
         modifier = Modifier
@@ -35,7 +42,7 @@ fun EmptyNextShoppingList() {
             .height(config.screenHeightDp.dp - 60.dp)
             .padding(vertical = MaterialTheme.spacing.small),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = verticalArrangement
     ) {
         Image(
             painter = painterResource(id = R.drawable.empty_next_chart),
