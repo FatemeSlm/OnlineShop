@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.digikala.data.model.cart.CartStatus
+import com.example.digikala.navigation.Screen
 import com.example.digikala.ui.component.Loading
 import com.example.digikala.util.Constants.User_Token
 import com.example.digikala.viewmodel.CartViewModel
@@ -99,7 +100,13 @@ fun ShoppingCart(
                     .padding(bottom = 60.dp),
 
                 ) {
-                CompleteThePurchase(cartDetail.value.payablePrice)
+                CompleteThePurchase(cartDetail.value.payablePrice) {
+                    if (User_Token.isEmpty()) {
+                        navController.navigate(Screen.Profile.route)
+                    } else {
+                        navController.navigate(Screen.Checkout.route)
+                    }
+                }
             }
         }
 

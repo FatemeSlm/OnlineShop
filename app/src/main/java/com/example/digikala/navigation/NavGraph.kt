@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.digikala.ui.screens.cart.CartScreen
 import com.example.digikala.ui.screens.category.CategoryScreen
+import com.example.digikala.ui.screens.checkout.CheckoutScreen
 import com.example.digikala.ui.screens.home.HomeScreen
 import com.example.digikala.ui.screens.home.WebPageScreen
 import com.example.digikala.ui.screens.profile.ProfileScreen
@@ -51,6 +52,10 @@ fun SetUpNavGraph(navController: NavHostController) {
             url?.let { myUrl ->
                 WebPageScreen(navController = navController, url = myUrl)
             }
+        }
+
+        composable(route = Screen.Checkout.route) {
+            CheckoutScreen(navController = navController)
         }
     }
 }

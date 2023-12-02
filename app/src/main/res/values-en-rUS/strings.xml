@@ -92,5 +92,11 @@
     <string name="login_or_register">login or register</string>
     <string name="login_or_register_msg">Please log in for a better shopping experience and to check the shipping method.</string>
 
+    <string name="address_and_time">Sending address and time</string>
+    <string name="send_to">Send To</string>
+    <string name="add_address">Add address</string>
+    <string name="change_address">Change or edit address</string>
+    <string name="no_address">There is no address to display</string>
+
 
 </resources>

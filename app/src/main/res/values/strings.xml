@@ -92,5 +92,10 @@
     <string name="login_or_register">ورود یا ثبت نام</string>
     <string name="login_or_register_msg">برای تجربه بهتر خرید و بررسی روش ارسال کالاها لطفا وارد شوید.</string>
 
+    <string name="address_and_time">آدرس و زمان ارسال</string>
+    <string name="send_to">ارسال به</string>
+    <string name="add_address">افزودن آدرس</string>
+    <string name="change_address">تغییر یا ویرایش آدرس</string>
+    <string name="no_address">آدرسی برای نمایش وجود ندارد</string>
 
 </resources>

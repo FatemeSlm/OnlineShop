@@ -36,7 +36,8 @@ import com.example.digikala.util.DigitHelper
 
 @Composable
 fun CompleteThePurchase(
-    price: Long
+    price: Long,
+    onClick: () -> Unit
 ) {
     Card(
         shape = MaterialTheme.roundedShape.extraSmall,
@@ -61,7 +62,7 @@ fun CompleteThePurchase(
         ) {
 
             Button(
-                onClick = {},
+                onClick = onClick,
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.red),
                 shape = MaterialTheme.shapes.small
             ) {
