@@ -97,6 +97,11 @@
     <string name="add_address">Add address</string>
     <string name="change_address">Change or edit address</string>
     <string name="no_address">There is no address to display</string>
+    <string name="deliveryAndTimeMethod">Delivery method and time</string>
+    <string name="ready_to_send">Ready to send</string>
+    <string name="choose_time">Choose sending time</string>
+    <string name="delivery_1">Delivery 1 of 1</string>
+    <string name="factor_info">"You can receive your purchase invoice after order delivery from the order details section in your user account.</string>
 
 
 </resources>

@@ -63,7 +63,7 @@ fun CheckoutTopBar(
     Spacer(
         modifier = Modifier
             .fillMaxWidth()
-            .height(3.dp)
+            .height(2.dp)
             .background(MaterialTheme.colorScheme.searchBarBg)
     )
 }

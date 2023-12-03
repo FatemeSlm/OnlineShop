@@ -9,7 +9,6 @@ import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.repository.CartRepository
 import com.example.digikala.ui.screens.cart.CartState
-import com.example.digikala.util.DigitHelper.applyDiscount
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,12 +33,15 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
     val currentCartItemsCount = repository.currentCartItemsCount
     val nextCartItemsCount = repository.nextCartItemsCount
 
+    val cartItems = MutableStateFlow<List<CartItem>>(emptyList())
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
             launch {
                 try {
                     repository.currentCartItems.collectLatest {
                         _currentCartItems.emit(CartState.Success(it))
+                        cartItems.emit(it)
                     }
                 } catch (exp: Exception) {
                     _currentCartItems.emit(CartState.Error(exp.toString()))

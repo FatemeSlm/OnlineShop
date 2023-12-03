@@ -97,5 +97,10 @@
     <string name="add_address">افزودن آدرس</string>
     <string name="change_address">تغییر یا ویرایش آدرس</string>
     <string name="no_address">آدرسی برای نمایش وجود ندارد</string>
+    <string name="deliveryAndTimeMethod">شیوه و زمان ارسال</string>
+    <string name="ready_to_send">آماده ارسال</string>
+    <string name="choose_time">انتخاب زمان ارسال</string>
+    <string name="delivery_1">مرسوله 1 از 1</string>
+    <string name="factor_info">"شما می توانید فاکتور خرید خود را پس از تحویل سفارش از بخش جزییات سفارش در حساب کاربری خود دریافت نمایید.</string>
 
 </resources>

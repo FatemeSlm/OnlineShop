@@ -173,7 +173,7 @@ fun CartAddressSection(
         modifier = Modifier
             .padding(vertical = MaterialTheme.spacing.medium)
             .fillMaxWidth()
-            .height(MaterialTheme.spacing.small)
+            .height(MaterialTheme.spacing.extraSmall)
             .alpha(.4f)
             .shadow(2.dp),
         color = Color.LightGray
