@@ -102,6 +102,12 @@
     <string name="choose_time">Choose sending time</string>
     <string name="delivery_1">Delivery 1 of 1</string>
     <string name="factor_info">"You can receive your purchase invoice after order delivery from the order details section in your user account.</string>
+    <string name="shipping_cost_last_alert">Calculated based on your address, delivery time, weight and volume</string>
+    <string name="delivery_cost">Shipping cost</string>
+    <string name="final_price">Payable amount</string>
+    <string name="cost_details">Cost details</string>
+    <string name="pishtaz_post">Posted by Pishtaz Post</string>
+    <string name="delivery_delay">3 to 5 working days</string>
 
 
 </resources>

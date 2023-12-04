@@ -37,8 +37,15 @@ import com.example.digikala.util.DigitHelper
 @Composable
 fun CompleteThePurchase(
     price: Long,
+    shippingCost: Int = 0,
     onClick: () -> Unit
 ) {
+
+    var title = stringResource(id = R.string.goods_total_price)
+    if (shippingCost > 0) {
+        title = stringResource(id = R.string.final_price)
+    }
+
     Card(
         shape = MaterialTheme.roundedShape.extraSmall,
         colors = CardDefaults.cardColors(
@@ -82,13 +89,13 @@ fun CompleteThePurchase(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.goods_total_price),
+                    text = title,
                     color = MaterialTheme.colorScheme.semiDarkText,
                     style = MaterialTheme.typography.titleSmall
                 )
                 Row {
                     Text(
-                        text = DigitHelper.digitByLocateAndSeparator(price.toString()),
+                        text = DigitHelper.digitByLocateAndSeparator((price + shippingCost).toString()),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.darkText,

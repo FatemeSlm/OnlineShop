@@ -39,7 +39,7 @@ import com.example.digikala.util.DigitHelper.digitByLocate
 
 @Composable
 fun CartItemReviewSection(
-    shippingCost: String,
+    shippingCost: Int,
     cartDetail: CartDetail,
     currentCartItem: List<CartItem>
 ) {

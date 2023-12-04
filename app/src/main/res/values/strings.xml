@@ -102,5 +102,12 @@
     <string name="choose_time">انتخاب زمان ارسال</string>
     <string name="delivery_1">مرسوله 1 از 1</string>
     <string name="factor_info">"شما می توانید فاکتور خرید خود را پس از تحویل سفارش از بخش جزییات سفارش در حساب کاربری خود دریافت نمایید.</string>
+    <string name="shipping_cost_last_alert">محاسبه شده بر اساس آدرس، زمان تحویل، وزن و حجم مرسوله شما</string>
+    <string name="delivery_cost">هزینه ارسال</string>
+    <string name="final_price">مبلغ قابل پرداخت</string>
+    <string name="cost_details">جزئیات قیمت</string>
+    <string name="pishtaz_post">ارسال توسط پست پیشتاز</string>
+    <string name="delivery_delay">3 تا 5 روز کاری</string>
+
 
 </resources>
