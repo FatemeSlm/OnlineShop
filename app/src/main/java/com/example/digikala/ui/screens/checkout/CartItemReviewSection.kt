@@ -39,9 +39,9 @@ import com.example.digikala.util.DigitHelper.digitByLocate
 
 @Composable
 fun CartItemReviewSection(
-    shippingCost: Int,
     cartDetail: CartDetail,
-    currentCartItem: List<CartItem>
+    currentCartItem: List<CartItem>,
+    onDeliveryTimeClick: () -> Unit
 ) {
 
     Column(
@@ -129,19 +129,34 @@ fun CartItemReviewSection(
                     }
                 }
 
-                Text(
-                    text = stringResource(id = R.string.ready_to_send),
-                    style = MaterialTheme.typography.extraSmall,
-                    color = Color.Gray,
-                    modifier = Modifier
-                        .padding(vertical = MaterialTheme.spacing.medium)
-                        .align(Alignment.Start)
-                )
+                Row {
+                    Text(
+                        text = stringResource(id = R.string.ready_to_send),
+                        style = MaterialTheme.typography.extraSmall,
+                        color = Color.Gray,
+                        modifier = Modifier
+                            .padding(vertical = MaterialTheme.spacing.medium)
+                    )
+                    Text(
+                        text = digitByLocate(
+                            " : ${stringResource(id = R.string.pishtaz_post)} (${
+                                stringResource(
+                                    id = R.string.delivery_delay
+                                )
+                            })"
+                        ),
+                        style = MaterialTheme.typography.extraSmall,
+                        color = Color.Gray,
+                        modifier = Modifier
+                            .padding(vertical = MaterialTheme.spacing.medium)
+                    )
+                }
 
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = MaterialTheme.spacing.medium),
+                        .padding(bottom = MaterialTheme.spacing.medium)
+                        .clickable { onDeliveryTimeClick() },
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically
 
