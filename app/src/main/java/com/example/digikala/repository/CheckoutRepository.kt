@@ -1,5 +1,6 @@
 package com.example.digikala.repository
 
+import com.example.digikala.data.model.checkout.OrderRequest
 import com.example.digikala.data.remote.BaseApiResponse
 import com.example.digikala.data.remote.CheckoutApiInterface
 import com.example.digikala.data.remote.NetworkResult
@@ -11,6 +12,11 @@ class CheckoutRepository @Inject constructor(private val api: CheckoutApiInterfa
     suspend fun getShippingCost(address: String): NetworkResult<Int> =
         safeApiCall {
             api.getShippingCost(address)
+        }
+
+    suspend fun addNewOrder(orderRequest: OrderRequest): NetworkResult<String> =
+        safeApiCall {
+            api.addNewOrder(orderRequest)
         }
 
 }

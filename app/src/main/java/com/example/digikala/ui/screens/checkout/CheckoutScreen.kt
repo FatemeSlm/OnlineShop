@@ -11,6 +11,7 @@ import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -23,10 +24,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.digikala.data.model.UserAddress
+import com.example.digikala.data.model.checkout.OrderRequest
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.screens.cart.CartPriceDetail
 import com.example.digikala.ui.screens.cart.CompleteThePurchase
+import com.example.digikala.util.Constants.User_Token
 import com.example.digikala.viewmodel.CartViewModel
 import com.example.digikala.viewmodel.CheckoutViewModel
 import kotlinx.coroutines.launch
@@ -42,12 +46,14 @@ fun CheckoutScreen(
     val cartDetail by cartViewModel.cartDetail.collectAsState()
     val cartItems by cartViewModel.cartItems.collectAsState()
 
+    var shippingCost by remember { mutableIntStateOf(0) }
+    var loading by remember { mutableStateOf(false) }
 
-    var shippingCost by remember {
-        mutableIntStateOf(0)
-    }
-    var loading by remember {
-        mutableStateOf(false)
+    var address: UserAddress? = null
+    var addressName by remember { mutableStateOf("") }
+
+    LaunchedEffect(true) {
+        checkoutViewModel.getShippingCost(addressName)
     }
 
     val shippingCostResult by checkoutViewModel.shippingCost.collectAsState()
@@ -60,7 +66,7 @@ fun CheckoutScreen(
 
         is NetworkResult.Error -> {
             loading = false
-            Log.e("3636", "CheckoutScreen error : ${shippingCostResult.message}")
+            Log.e("3636", "CheckoutScreen shippingCost error : ${shippingCostResult.message}")
 
         }
 
@@ -69,6 +75,24 @@ fun CheckoutScreen(
 
         }
     }
+
+
+    var orderId by remember {
+        mutableStateOf("")
+    }
+    val orderResult by checkoutViewModel.orderResponse.collectAsState()
+    when (orderResult) {
+        is NetworkResult.Success -> {
+            orderId = orderResult.data ?: ""
+        }
+
+        is NetworkResult.Error -> {
+            Log.e("3636", "checkoutScreen order error : ${orderResult.message}")
+        }
+
+        is NetworkResult.Loading -> {}
+    }
+
 
     val coroutineScope = rememberCoroutineScope()
 
@@ -98,9 +122,8 @@ fun CheckoutScreen(
                 item {
                     CartAddressSection(navController) { addressList ->
                         if (addressList.isNotEmpty()) {
-                            checkoutViewModel.getShippingCost(addressList[0].address)
-                        } else {
-                            checkoutViewModel.getShippingCost("")
+                            address = addressList[0]
+                            addressName = addressList[0].address
                         }
                     }
                 }
@@ -134,7 +157,17 @@ fun CheckoutScreen(
                         price = cartDetail.payablePrice,
                         shippingCost = shippingCost
                     ) {
-
+                        checkoutViewModel.addNewOrder(
+                            OrderRequest(
+                                orderAddress = address!!.address,
+                                orderProducts = cartItems,
+                                orderTotalDiscount = cartDetail.totalDiscount,
+                                orderTotalPrice = cartDetail.payablePrice + shippingCost,
+                                orderUserName = address!!.name,
+                                orderUserPhone = address!!.phone,
+                                token = User_Token
+                            )
+                        )
                     }
                 }
             }
