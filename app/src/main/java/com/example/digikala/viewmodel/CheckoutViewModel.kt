@@ -2,6 +2,7 @@ package com.example.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.digikala.data.model.checkout.ConfirmPurchaseRequest
 import com.example.digikala.data.model.checkout.OrderRequest
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.repository.CheckoutRepository
@@ -17,6 +18,7 @@ class CheckoutViewModel @Inject constructor(private val repository: CheckoutRepo
 
     val shippingCost = MutableStateFlow<NetworkResult<Int>>(NetworkResult.Loading())
     val orderResponse = MutableStateFlow<NetworkResult<String>>(NetworkResult.Loading())
+    val purchaseResponse = MutableStateFlow<NetworkResult<String>>(NetworkResult.Loading())
 
     fun getShippingCost(address: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -29,4 +31,15 @@ class CheckoutViewModel @Inject constructor(private val repository: CheckoutRepo
             orderResponse.emit(repository.addNewOrder(orderRequest))
         }
     }
+
+    fun confirmPurchase(confirmPurchase: ConfirmPurchaseRequest) {
+        viewModelScope.launch(Dispatchers.IO) {
+            purchaseResponse.emit(
+                repository.confirmPurchase(
+                    confirmPurchase
+                )
+            )
+        }
+    }
+
 }

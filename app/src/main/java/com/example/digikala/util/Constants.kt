@@ -20,6 +20,9 @@ object Constants {
     var User_Phone = "User_Phone"
     var User_Password = "User_Password"
 
+    const val Zarinpal_Merchant_Id = ""
+
+
     const val DIGIJET_URL = "https://www.digikalajet.com/user/address"
     const val AUCTION_URL =
         "https://www.digistyle.com/sale-landing/?utm_source=digikala&utm_medium=circle_badge&utm_campaign=style&promo_name=style&promo_position=circle_badge"

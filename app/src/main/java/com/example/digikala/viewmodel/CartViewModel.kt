@@ -72,7 +72,7 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
         var totalDiscount = 0L
         items.forEach { item ->
             totalPrice += item.price * item.count
-            totalDiscount += (item.price * item.discountPercent /100) * item.count
+            totalDiscount += (item.price * item.discountPercent / 100) * item.count
             totalCount += item.count
         }
         val payablePrice: Long = totalPrice - totalDiscount
@@ -94,6 +94,12 @@ class CartViewModel @Inject constructor(private val repository: CartRepository) 
     fun removeItem(cartItem: CartItem) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.removeItem(cartItem)
+        }
+    }
+
+    fun deleteAllItems() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAllItems()
         }
     }
 

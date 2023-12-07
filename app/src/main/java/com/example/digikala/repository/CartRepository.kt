@@ -25,19 +25,23 @@ class CartRepository @Inject constructor(
             api.getSuggestedItems()
         }
 
-    suspend fun insertCartItem(cartItem: CartItem){
+    suspend fun insertCartItem(cartItem: CartItem) {
         dao.insertCartItem(cartItem)
     }
 
-    suspend fun removeItem(cartItem: CartItem){
+    suspend fun removeItem(cartItem: CartItem) {
         dao.removeItem(cartItem)
     }
 
-    suspend fun updateItemCount(id:String, newCount:Int){
+    suspend fun deleteAllItems() {
+        dao.deleteAllItems(CartStatus.CURRENT_CART)
+    }
+
+    suspend fun updateItemCount(id: String, newCount: Int) {
         dao.updateItemCount(id, newCount)
     }
 
-    suspend fun updateItemStatus(id:String, newStatus:CartStatus){
+    suspend fun updateItemStatus(id: String, newStatus: CartStatus) {
         dao.updateItemStatus(id, newStatus)
     }
 

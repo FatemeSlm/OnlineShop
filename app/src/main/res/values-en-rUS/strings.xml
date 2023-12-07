@@ -108,6 +108,11 @@
     <string name="cost_details">Cost details</string>
     <string name="pishtaz_post">Posted by Pishtaz Post</string>
     <string name="delivery_delay">3 to 5 working days</string>
+    <string name="return_to_home_page">Return to home page</string>
+    <string name="order_status">order status</string>
+    <string name="order_code">order code</string>
+    <string name="waiting_for_purchase">Awaiting payment</string>
+    <string name="purchase_is_ok">Payment was successful</string>
 
 
 </resources>

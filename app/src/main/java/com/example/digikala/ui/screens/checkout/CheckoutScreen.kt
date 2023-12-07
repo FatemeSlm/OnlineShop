@@ -27,12 +27,15 @@ import androidx.navigation.NavHostController
 import com.example.digikala.data.model.UserAddress
 import com.example.digikala.data.model.checkout.OrderRequest
 import com.example.digikala.data.remote.NetworkResult
+import com.example.digikala.navigation.Screen
 import com.example.digikala.ui.component.Loading
 import com.example.digikala.ui.screens.cart.CartPriceDetail
 import com.example.digikala.ui.screens.cart.CompleteThePurchase
 import com.example.digikala.util.Constants.User_Token
 import com.example.digikala.viewmodel.CartViewModel
 import com.example.digikala.viewmodel.CheckoutViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -55,7 +58,6 @@ fun CheckoutScreen(
     LaunchedEffect(true) {
         checkoutViewModel.getShippingCost(addressName)
     }
-
     val shippingCostResult by checkoutViewModel.shippingCost.collectAsState()
     when (shippingCostResult) {
         is NetworkResult.Success -> {
@@ -80,22 +82,30 @@ fun CheckoutScreen(
     var orderId by remember {
         mutableStateOf("")
     }
-    val orderResult by checkoutViewModel.orderResponse.collectAsState()
-    when (orderResult) {
-        is NetworkResult.Success -> {
-            orderId = orderResult.data ?: ""
-        }
+    LaunchedEffect(Dispatchers.Main) {
+        checkoutViewModel.orderResponse.collectLatest { orderResult ->
+            when (orderResult) {
+                is NetworkResult.Success -> {
+                    orderId = orderResult.data ?: ""
+                    navController.navigate(
+                        Screen.ConfirmPurchase.withArgs(
+                            orderId,
+                            cartDetail.payablePrice + shippingCost
+                        )
+                    )
+                }
 
-        is NetworkResult.Error -> {
-            Log.e("3636", "checkoutScreen order error : ${orderResult.message}")
-        }
+                is NetworkResult.Error -> {
+                    Log.e("3636", "checkoutScreen order error : ${orderResult.message}")
+                }
 
-        is NetworkResult.Loading -> {}
+                is NetworkResult.Loading -> {}
+            }
+        }
     }
 
 
     val coroutineScope = rememberCoroutineScope()
-
     val modalSheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
         confirmValueChange = {
