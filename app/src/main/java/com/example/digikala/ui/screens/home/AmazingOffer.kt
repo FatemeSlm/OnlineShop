@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.digikala.R
 import com.example.digikala.data.model.home.AmazingProduct
 import com.example.digikala.data.remote.NetworkResult
@@ -26,6 +27,7 @@ import com.example.digikala.viewmodel.HomeViewModel
 
 @Composable
 fun AmazingOffer(
+    navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     var amazingProductList by remember {
@@ -70,7 +72,7 @@ fun AmazingOffer(
                     )
                 }
                 items(amazingProductList) { item ->
-                    AmazingProduct(item)
+                    AmazingProduct(item, navController)
                 }
                 item {
                     AmazingShowMoreCard()
