@@ -113,5 +113,6 @@
     <string name="order_code">کد سفارش</string>
     <string name="waiting_for_purchase">در انتظار پرداخت</string>
     <string name="purchase_is_ok">پرداخت موفق بود</string>
+    <string name="add_to_basket">افزودن به سبد خرید</string>
 
 </resources>

@@ -9,7 +9,7 @@ data class ItemDetail(
     val seller: String,
     val category: String,
     val categoryId: String,
-    val price: Int,
+    val price: Long,
     val description: String,
     val discountPercent: Int,
     val star: Double,

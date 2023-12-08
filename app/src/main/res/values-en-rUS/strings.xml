@@ -113,6 +113,6 @@
     <string name="order_code">order code</string>
     <string name="waiting_for_purchase">Awaiting payment</string>
     <string name="purchase_is_ok">Payment was successful</string>
-
+    <string name="add_to_basket">Add to basket</string>
 
 </resources>
