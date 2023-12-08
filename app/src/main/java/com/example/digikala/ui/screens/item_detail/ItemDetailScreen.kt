@@ -11,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -60,9 +61,9 @@ fun ItemDetailScreen(
     }
 
     //ui
-
     if (loading) {
-        Loading(height = 400.dp, isDark = true)
+        val config = LocalConfiguration.current
+        Loading(height = config.screenHeightDp.dp, isDark = true)
     } else {
         if (itemDetail != null) {
             Scaffold(
@@ -72,10 +73,9 @@ fun ItemDetailScreen(
             ) {
                 LazyColumn {
 
+                    item { ItemDetailTopSlider(imageList = itemDetail!!.imageSlider) }
                 }
             }
         }
     }
-
-
 }

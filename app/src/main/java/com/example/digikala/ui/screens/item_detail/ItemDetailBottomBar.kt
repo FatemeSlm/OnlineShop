@@ -93,7 +93,7 @@ fun ItemDetailBottomBar(
                             .wrapContentHeight(Alignment.CenterVertically)
                     ) {
                         Text(
-                            text = "${digitByLocate(itemDetail.discountPercent.toString())}%",
+                            text = "${digitByLocate(itemDetail.discountPercent.toString())} %",
                             color = Color.White,
                             style = MaterialTheme.typography.titleSmall,
                             modifier = Modifier

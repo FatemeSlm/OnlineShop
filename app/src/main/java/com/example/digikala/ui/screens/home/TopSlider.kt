@@ -2,7 +2,6 @@ package com.example.digikala.ui.screens.home
 
 import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -94,51 +93,53 @@ fun TopSlider(viewModel: HomeViewModel = hiltViewModel()) {
                 var imageUrl by remember {
                     mutableStateOf("")
                 }
-                HorizontalPager(
-                    count = sliderList.size,
-                    state = pagerState,
-                    contentPadding = PaddingValues(horizontal = LocalSpacing.current.medium),
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                ) { index ->
-                    imageUrl = sliderList[index].image
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.BottomCenter
-                    ) {
 
-                        val painter = rememberAsyncImagePainter(
-                            ImageRequest.Builder(LocalContext.current)
-                                .data(data = imageUrl)
-                                .apply(
-                                    block = fun ImageRequest.Builder.() {
-                                        scale(Scale.FILL)
-                                    }
-                                ).build()
-                        )
-                        Image(
-                            painter = painter,
-                            contentDescription = "",
-                            modifier = Modifier
-                                .padding(LocalSpacing.current.small)
-                                .clip(LocalShape.current.medium)
-                                .fillMaxSize(),
-                            contentScale = ContentScale.FillBounds,
-                        )
+                Box() {
 
-                        HorizontalPagerIndicator(
-                            pagerState = pagerState,
-                            modifier = Modifier
-                                .align(Alignment.BottomEnd)
-                                .padding(LocalSpacing.current.semiLarge),
-                            activeColor = Color.Black,
-                            inactiveColor = Color.LightGray,
-                            indicatorWidth = LocalSpacing.current.small,
-                            indicatorHeight = LocalSpacing.current.small,
-                            indicatorShape = CircleShape,
-                        )
+                    HorizontalPager(
+                        count = sliderList.size,
+                        state = pagerState,
+                        contentPadding = PaddingValues(horizontal = LocalSpacing.current.medium),
+                        modifier = Modifier.fillMaxWidth()
+                    ) { index ->
+                        imageUrl = sliderList[index].image
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.BottomCenter
+                        ) {
+
+                            val painter = rememberAsyncImagePainter(
+                                ImageRequest.Builder(LocalContext.current)
+                                    .data(data = imageUrl)
+                                    .apply(
+                                        block = fun ImageRequest.Builder.() {
+                                            scale(Scale.FILL)
+                                        }
+                                    ).build()
+                            )
+                            Image(
+                                painter = painter,
+                                contentDescription = "",
+                                modifier = Modifier
+                                    .padding(LocalSpacing.current.small)
+                                    .clip(LocalShape.current.medium)
+                                    .fillMaxSize(),
+                                contentScale = ContentScale.FillBounds,
+                            )
+                        }
                     }
+
+                    HorizontalPagerIndicator(
+                        pagerState = pagerState,
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .padding(LocalSpacing.current.semiLarge),
+                        activeColor = Color.Black,
+                        inactiveColor = Color.LightGray,
+                        indicatorWidth = LocalSpacing.current.small,
+                        indicatorHeight = LocalSpacing.current.small,
+                        indicatorShape = CircleShape,
+                    )
                 }
 
                 LaunchedEffect(key1 = pagerState.currentPage) {
