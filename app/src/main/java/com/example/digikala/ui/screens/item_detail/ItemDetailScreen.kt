@@ -74,6 +74,7 @@ fun ItemDetailScreen(
                 LazyColumn {
 
                     item { ItemDetailTopSlider(imageList = itemDetail!!.imageSlider) }
+                    item { ItemDetailHeader(itemDetail!!) }
                 }
             }
         }

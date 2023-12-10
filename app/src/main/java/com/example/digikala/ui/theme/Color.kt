@@ -23,6 +23,14 @@ val ColorScheme.CursorColor: Color
     @Composable
     get() = Color(0xFF018577)
 
+val ColorScheme.Gold: Color
+    @Composable
+    get() = Color(0xFFF9BC01)
+
+val ColorScheme.GrayAlpha: Color
+    @Composable
+    get() = Color(0xFFC1C2C6)
+
 val ColorScheme.Orange: Color
     @Composable
     get() = Color(0xFFFF5722)
