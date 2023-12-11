@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,6 +22,7 @@ import com.example.digikala.ui.theme.Gold
 import com.example.digikala.ui.theme.GrayAlpha
 import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkText
+import com.example.digikala.ui.theme.grayCategory
 import com.example.digikala.ui.theme.lightGreen
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.spacing
@@ -130,5 +132,11 @@ fun ItemDetailHeader(
                 modifier = Modifier.padding(horizontal = MaterialTheme.spacing.small)
             )
         }
+
+        Divider(
+            color = MaterialTheme.colorScheme.grayCategory,
+            thickness = 1.dp,
+            modifier = Modifier.padding(horizontal = MaterialTheme.spacing.medium)
+        )
     }
 }

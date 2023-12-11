@@ -75,6 +75,7 @@ fun ItemDetailScreen(
 
                     item { ItemDetailTopSlider(imageList = itemDetail!!.imageSlider) }
                     item { ItemDetailHeader(itemDetail!!) }
+                    item { ItemDetailSelectColor(itemDetail!!.colors) }
                 }
             }
         }

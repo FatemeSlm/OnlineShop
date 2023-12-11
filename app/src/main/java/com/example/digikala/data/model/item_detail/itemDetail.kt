@@ -20,7 +20,7 @@ data class ItemDetail(
     val agreeCount: Int,
     val agreePercent: Int,
     val imageSlider: List<ImageSlider>,
-    val colors: List<Color>,
+    val colors: List<ItemColor>,
     val comments: List<Comment>,
     val priceList: List<Price>,
     val technicalFeatures: Map<String, String>
@@ -33,7 +33,7 @@ data class ImageSlider(
     val productId: String
 )
 
-data class Color(
+data class ItemColor(
     @SerializedName("_id")
     val id: String,
     val color: String,
