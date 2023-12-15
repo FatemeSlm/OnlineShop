@@ -90,6 +90,7 @@ fun ItemDetailScreen(
                         )
                     }
                     item { ItemDetailComment(itemDetail!!.comments, itemDetail!!.commentCount) }
+                    item { ItemDetailSetComment(navController, itemDetail!!) }
                 }
             }
         }

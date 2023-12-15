@@ -135,4 +135,24 @@
     <string name="bad_comment">I do not recommend buying this product</string>
     <string name="good_comment">I recommend buying this product</string>
 
+    <string name="write_your_comment">Write your comment about this commodity</string>
+    <string name="comment_desc">5 points of Digi Club \n
+After confirming the comment, go to the club missions page and get your points</string>
+    <string name="your_comment">your comment</string>
+
+    <string name="very_bad">Very bad</string>
+    <string name="bad">Bad</string>
+    <string name="normal">Normal</string>
+    <string name="good">Good</string>
+    <string name="very_good">Excellent</string>
+    <string name="say_your_comment">say your comment</string>
+    <string name="comment_title">Comment title</string>
+    <string name="comment_text">Comment text *</string>
+    <string name="set_new_comment">set comment</string>
+    <string name="comment_anonymously">Send a comment anonymously</string>
+    <string name="comment_title_null">Comment title not entered!</string>
+    <string name="comment_star_null">Comment rating (star) has not been entered!</string>
+    <string name="comment_body_null">Comment text is not entered!Q</string>
+
+
 </resources>

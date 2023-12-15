@@ -15,6 +15,7 @@ import com.example.digikala.ui.screens.home.WebPageScreen
 import com.example.digikala.ui.screens.item_detail.ItemDescriptionScreen
 import com.example.digikala.ui.screens.item_detail.ItemDetailScreen
 import com.example.digikala.ui.screens.item_detail.ItemTechFeatureScreen
+import com.example.digikala.ui.screens.item_detail.NewCommentScreen
 import com.example.digikala.ui.screens.profile.ProfileScreen
 import com.example.digikala.ui.screens.splash.SplashScreen
 
@@ -138,6 +139,39 @@ fun SetUpNavGraph(navController: NavHostController) {
                     navController = navController,
                     jsonString = features
                 )
+            }
+        }
+
+        composable(route = Screen.NewComment.route + "?itemId={itemId}?itemName={itemName}?imageUrl={imageUrl}",
+            arguments = listOf(
+                navArgument("itemId") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                },
+                navArgument("itemName") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                },
+                navArgument("imageUrl") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                }
+            )
+        ) {
+            it.arguments?.getString("itemId")?.let { itemId ->
+                it.arguments?.getString("itemName")?.let { itemName ->
+                    it.arguments?.getString("imageUrl")?.let { imageUrl ->
+                        NewCommentScreen(
+                            navController,
+                            itemId,
+                            itemName,
+                            imageUrl
+                        )
+                    }
+                }
             }
         }
     }

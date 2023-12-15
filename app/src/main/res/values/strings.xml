@@ -135,4 +135,27 @@
     <string name="bad_comment">خرید این محصول را توصیه نمیکنم</string>
     <string name="good_comment">خرید این محصول را توصیه میکنم</string>
 
+    <string name="write_your_comment">دیدگاه خود را درباره این کالا بنویسید</string>
+    <string name="comment_desc">۵ امتیاز دیجی‌کلاب \n
+پس از تایید نظر، با مراجعه به صفحه‌ی ماموریت‌های کلابی امتیاز خود را دریافت کنید</string>
+
+    <string name="your_comment">دیدگاه شما</string>
+
+    <string name="very_bad">خیلی بد</string>
+    <string name="bad">بد</string>
+    <string name="normal">معمولی</string>
+    <string name="good">خوب</string>
+    <string name="very_good">عالی</string>
+
+    <string name="say_your_comment">دیدگاه خود را شرح دهید</string>
+    <string name="comment_title">عنوان نظر</string>
+    <string name="comment_text">متن نظر *</string>
+    <string name="set_new_comment">ثبت دیدگاه</string>
+    <string name="comment_anonymously">ارسال دیدگاه به صورت ناشناس</string>
+
+    <string name="comment_title_null">عنوان کامنت وارد نشده است!</string>
+    <string name="comment_star_null">امتیاز(ستاره) کامنت وارد نشده است!</string>
+    <string name="comment_body_null">متن کامنت وارد نشده است!</string>
+
+
 </resources>
