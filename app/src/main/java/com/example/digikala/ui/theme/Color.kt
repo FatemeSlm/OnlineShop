@@ -99,3 +99,7 @@ val ColorScheme.lightCyan: Color
 val ColorScheme.lightGreen: Color
     @Composable
     get() = if (!isSystemInDarkTheme()) Color(0xFF86BF3C) else Color(0xFF3A531A)
+
+val ColorScheme.Green: Color
+    @Composable
+    get() = Color(0xFF00A049)

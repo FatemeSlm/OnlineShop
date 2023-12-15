@@ -89,6 +89,7 @@ fun ItemDetailScreen(
                             itemDetail!!.technicalFeatures
                         )
                     }
+                    item { ItemDetailComment(itemDetail!!.comments, itemDetail!!.commentCount) }
                 }
             }
         }

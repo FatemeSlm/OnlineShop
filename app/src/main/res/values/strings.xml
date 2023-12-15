@@ -130,6 +130,9 @@
     <string name="technical_specifications">مشخصات فنی</string>
     <string name="specifications">مشخصات</string>
     <string name="review">نقد و بررسی</string>
-
+    <string name="comment">نظر</string>
+    <string name="so_so_comment">در مورد خرید این محصول مطمئن نیستم</string>
+    <string name="bad_comment">خرید این محصول را توصیه نمیکنم</string>
+    <string name="good_comment">خرید این محصول را توصیه میکنم</string>
 
 </resources>
