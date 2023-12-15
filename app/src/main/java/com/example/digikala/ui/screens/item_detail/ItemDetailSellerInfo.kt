@@ -89,7 +89,7 @@ fun ItemDetailSellerInfo() {
                 painter = painterResource(id = R.drawable.digi_logo),
                 contentDescription = "",
                 modifier = Modifier
-                    .size(25.dp)
+                    .size(22.dp)
                     .clip(MaterialTheme.roundedShape.small)
             )
 
@@ -125,7 +125,7 @@ fun ItemDetailSellerInfo() {
 
         Row(
             modifier = Modifier.padding(
-                bottom = MaterialTheme.spacing.semiMedium,
+                top = MaterialTheme.spacing.small,
                 start = MaterialTheme.spacing.small,
                 end = MaterialTheme.spacing.small,
             ),
@@ -244,7 +244,7 @@ fun ItemDetailSellerInfo() {
 
         Row(
             modifier = Modifier.padding(
-                horizontal = MaterialTheme.spacing.small
+                MaterialTheme.spacing.small,
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -270,7 +270,6 @@ fun ItemDetailSellerInfo() {
 
         Spacer(
             modifier = Modifier
-                .padding(top = MaterialTheme.spacing.small)
                 .fillMaxWidth()
                 .height(1.dp)
                 .background(MaterialTheme.colorScheme.grayCategory)
@@ -278,9 +277,7 @@ fun ItemDetailSellerInfo() {
 
         Row(
             modifier = Modifier.padding(
-                bottom = MaterialTheme.spacing.small,
-                start = MaterialTheme.spacing.small,
-                end = MaterialTheme.spacing.small,
+                MaterialTheme.spacing.small,
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {

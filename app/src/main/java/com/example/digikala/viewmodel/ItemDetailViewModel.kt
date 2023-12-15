@@ -2,6 +2,7 @@ package com.example.digikala.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.model.item_detail.ItemDetail
 import com.example.digikala.data.remote.NetworkResult
 import com.example.digikala.repository.ItemDetailRepository
@@ -16,10 +17,17 @@ class ItemDetailViewModel @Inject constructor(private val repository: ItemDetail
     ViewModel() {
 
     val itemDetail = MutableStateFlow<NetworkResult<ItemDetail>>(NetworkResult.Loading())
+    val similarItems = MutableStateFlow<NetworkResult<List<StoreProduct>>>(NetworkResult.Loading())
 
     fun getItemById(itemId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             itemDetail.emit(repository.getItemById(itemId))
+        }
+    }
+
+    fun getSimilarItems(categoryId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            similarItems.emit(repository.getSimilarItems(categoryId))
         }
     }
 

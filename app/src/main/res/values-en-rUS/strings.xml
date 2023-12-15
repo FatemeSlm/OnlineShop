@@ -123,6 +123,7 @@
     <string name="manufacturer_price">Manufacturer price:</string>
     <string name="toman">Toman</string>
     <string name="better_price_suggestion">Do You Know a Better Price?</string>
+    <string name="similar_product">similar product</string>
 
 
 </resources>

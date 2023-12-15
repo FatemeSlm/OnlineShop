@@ -123,6 +123,7 @@
     <string name="manufacturer_price">قیمت تولید کننده:</string>
     <string name="toman">تومان</string>
     <string name="better_price_suggestion">آیا قیمت بهتری سراغ دارید؟</string>
+    <string name="similar_product">محصولات مشابه</string>
 
 
 </resources>

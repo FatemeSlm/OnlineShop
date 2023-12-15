@@ -80,6 +80,8 @@ fun ItemDetailScreen(
                     item { ItemDetailTopSlider(imageList = itemDetail!!.imageSlider) }
                     item { ItemDetailHeader(itemDetail!!) }
                     item { ItemDetailSelectColor(itemDetail!!.colors) }
+                    item { ItemDetailSellerInfo() }
+                    item { ItemDetailSimilarItems(categoryId = itemDetail!!.categoryId) }
                 }
             }
         }
