@@ -35,12 +35,19 @@ import com.example.digikala.ui.theme.grayCategory
 import com.example.digikala.ui.theme.settingArrow
 import com.example.digikala.ui.theme.spacing
 import com.example.digikala.ui.theme.unselectedBottomBar
+import com.google.gson.JsonObject
 
 @Composable
 fun ItemDetailDesc(
     navController: NavHostController,
-    description: String
+    description: String,
+    techFeatures: JsonObject?
 ) {
+    var techFeaturesString = ""
+    techFeatures?.let {
+        techFeaturesString = it.toString()
+    }
+
     Divider(
         modifier = Modifier
             .fillMaxWidth()
@@ -58,36 +65,40 @@ fun ItemDetailDesc(
         modifier = Modifier.padding(MaterialTheme.spacing.small)
     )
 
-    Spacer(
-        modifier = Modifier
-            .padding(MaterialTheme.spacing.medium)
-            .fillMaxWidth()
-            .height(1.dp)
-            .background(MaterialTheme.colorScheme.grayCategory)
-    )
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { }
-            .padding(horizontal = MaterialTheme.spacing.medium),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-
-        Text(
-            text = stringResource(id = R.string.technical_specifications),
-            style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.darkText,
-            fontWeight = FontWeight.Bold,
+    if (techFeaturesString.isNotBlank()) {
+        Spacer(
+            modifier = Modifier
+                .padding(MaterialTheme.spacing.medium)
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(MaterialTheme.colorScheme.grayCategory)
         )
 
-        Icon(
-            imageVector = Icons.Outlined.KeyboardArrowLeft,
-            contentDescription = "",
-            modifier = Modifier.size(24.dp),
-            tint = MaterialTheme.colorScheme.settingArrow
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    navController.navigate(Screen.ItemTechFeature.withArgs(techFeaturesString))
+                }
+                .padding(horizontal = MaterialTheme.spacing.medium),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            Text(
+                text = stringResource(id = R.string.technical_specifications),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.darkText,
+                fontWeight = FontWeight.Bold,
+            )
+
+            Icon(
+                imageVector = Icons.Outlined.KeyboardArrowLeft,
+                contentDescription = "",
+                modifier = Modifier.size(24.dp),
+                tint = MaterialTheme.colorScheme.settingArrow
+            )
+        }
     }
 
     if (description.isNotBlank()) {

@@ -14,6 +14,7 @@ import com.example.digikala.ui.screens.home.HomeScreen
 import com.example.digikala.ui.screens.home.WebPageScreen
 import com.example.digikala.ui.screens.item_detail.ItemDescriptionScreen
 import com.example.digikala.ui.screens.item_detail.ItemDetailScreen
+import com.example.digikala.ui.screens.item_detail.ItemTechFeatureScreen
 import com.example.digikala.ui.screens.profile.ProfileScreen
 import com.example.digikala.ui.screens.splash.SplashScreen
 
@@ -118,6 +119,24 @@ fun SetUpNavGraph(navController: NavHostController) {
                 ItemDescriptionScreen(
                     navController = navController,
                     description = desc
+                )
+            }
+        }
+
+        composable(
+            route = Screen.ItemTechFeature.route + "/{features}",
+            arguments = listOf(
+                navArgument("features") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                },
+            )
+        ) {
+            it.arguments?.getString("features")?.let { features ->
+                ItemTechFeatureScreen(
+                    navController = navController,
+                    jsonString = features
                 )
             }
         }

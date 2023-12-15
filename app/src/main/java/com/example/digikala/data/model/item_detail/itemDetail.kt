@@ -1,5 +1,6 @@
 package com.example.digikala.data.model.item_detail
 
+import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 
 data class ItemDetail(
@@ -23,7 +24,7 @@ data class ItemDetail(
     val colors: List<ItemColor>,
     val comments: List<Comment>,
     val priceList: List<Price>,
-    val technicalFeatures: Map<String, String>
+    val technicalFeatures: JsonObject?
 )
 
 data class ImageSlider(
