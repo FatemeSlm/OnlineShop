@@ -32,6 +32,7 @@ import com.example.digikala.ui.theme.grayCategory
 import com.example.digikala.ui.theme.semiDarkText
 import com.example.digikala.ui.theme.settingArrow
 import com.example.digikala.ui.theme.spacing
+import com.example.digikala.util.Constants.User_Token
 
 @Composable
 fun ItemDetailSetComment(
@@ -45,9 +46,13 @@ fun ItemDetailSetComment(
                 vertical = MaterialTheme.spacing.medium
             )
             .clickable {
-                navController.navigate(
-                    Screen.NewComment.route + "?itemId=${item.id}?itemName=${item.name}?imageUrl=${item.imageSlider[0].image}"
-                )
+                if (User_Token.isEmpty()) {
+                    navController.navigate(Screen.Profile.route)
+                } else {
+                    navController.navigate(
+                        Screen.NewComment.route + "?itemId=${item.id}?itemName=${item.name}?imageUrl=${item.imageSlider[0].image}"
+                    )
+                }
             }
     ) {
 
