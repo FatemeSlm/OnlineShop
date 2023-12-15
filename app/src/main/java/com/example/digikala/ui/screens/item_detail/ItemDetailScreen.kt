@@ -2,6 +2,7 @@ package com.example.digikala.ui.screens.item_detail
 
 import android.annotation.SuppressLint
 import android.util.Log
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -11,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -71,7 +73,9 @@ fun ItemDetailScreen(
                     ItemDetailBottomBar(itemDetail = itemDetail!!, navController = navController)
                 }
             ) {
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier.padding(bottom = 70.dp)
+                ) {
 
                     item { ItemDetailTopSlider(imageList = itemDetail!!.imageSlider) }
                     item { ItemDetailHeader(itemDetail!!) }

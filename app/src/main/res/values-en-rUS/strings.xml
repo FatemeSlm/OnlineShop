@@ -116,6 +116,13 @@
     <string name="add_to_basket">Add to basket</string>
     <string name="user_comments">user comments</string>
     <string name="view">view</string>
+    <string name="seller">seller</string>
+    <string name="productWarranty">Warranty of authenticity and physical health of goods</string>
+    <string name="in_digi_stock">in digikala stock</string>
+    <string name="digiclub_get_score">Get digiclub score</string>
+    <string name="manufacturer_price">Manufacturer price:</string>
+    <string name="toman">Toman</string>
+    <string name="better_price_suggestion">Do You Know a Better Price?</string>
 
 
 </resources>

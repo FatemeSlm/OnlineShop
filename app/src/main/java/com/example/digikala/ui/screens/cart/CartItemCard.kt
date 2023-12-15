@@ -302,7 +302,7 @@ fun CartItemCard(
                                     horizontal = 40.dp,
                                     vertical = MaterialTheme.spacing.extraSmall
                                 )
-                        ){
+                        ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_baseline_shopping_cart_checkout),
                                 contentDescription = "",
@@ -404,7 +404,7 @@ fun CartItemCard(
 }
 
 @Composable
-private fun DetailRow(
+fun DetailRow(
     icon: Painter,
     text: String,
     color: Color,

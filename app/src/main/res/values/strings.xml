@@ -116,6 +116,13 @@
     <string name="add_to_basket">افزودن به سبد خرید</string>
     <string name="user_comments">دیدگاه کاربران</string>
     <string name="view">بازدید</string>
+    <string name="seller">فروشنده</string>
+    <string name="productWarranty">گارانتی اصالت و سلامت فیزیکی کالا</string>
+    <string name="in_digi_stock">موجود در انبار دیجی‌کالا</string>
+    <string name="digiclub_get_score">امتیاز دیجی‌کلاب دریافت کنید</string>
+    <string name="manufacturer_price">قیمت تولید کننده:</string>
+    <string name="toman">تومان</string>
+    <string name="better_price_suggestion">آیا قیمت بهتری سراغ دارید؟</string>
 
 
 </resources>
