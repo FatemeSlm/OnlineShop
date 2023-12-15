@@ -125,7 +125,7 @@ fun ItemDetailSellerInfo() {
 
         Row(
             modifier = Modifier.padding(
-                top = MaterialTheme.spacing.small,
+                bottom = MaterialTheme.spacing.biggerSmall,
                 start = MaterialTheme.spacing.small,
                 end = MaterialTheme.spacing.small,
             ),
@@ -148,6 +148,7 @@ fun ItemDetailSellerInfo() {
                     text = stringResource(id = R.string.productWarranty),
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.darkText,
+                    modifier = Modifier.padding(vertical = MaterialTheme.spacing.small)
                 )
                 Spacer(
                     modifier = Modifier

@@ -124,6 +124,11 @@
     <string name="toman">تومان</string>
     <string name="better_price_suggestion">آیا قیمت بهتری سراغ دارید؟</string>
     <string name="similar_product">محصولات مشابه</string>
+    <string name="product_desc">ویژگی‌های محصول</string>
+    <string name="product_desc_feedback">بازخورد درباره مشخصات این کالا</string>
+    <string name="product_introduce">معرفی اجمالی محصول</string>
+    <string name="technical_specifications">مشخصات فنی</string>
+    <string name="review">نقد و بررسی</string>
 
 
 </resources>

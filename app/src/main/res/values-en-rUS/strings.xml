@@ -124,6 +124,11 @@
     <string name="toman">Toman</string>
     <string name="better_price_suggestion">Do You Know a Better Price?</string>
     <string name="similar_product">similar product</string>
+    <string name="product_desc">Product features</string>
+    <string name="product_desc_feedback">Feedback about the specifications of this product</string>
+    <string name="product_introduce">Product brief introduction</string>
+    <string name="technical_specifications">Technical Specifications</string>
+    <string name="review">Review</string>
 
 
 </resources>
