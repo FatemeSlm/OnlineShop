@@ -12,6 +12,7 @@ import com.example.digikala.ui.screens.checkout.CheckoutScreen
 import com.example.digikala.ui.screens.checkout.ConfirmPurchaseScreen
 import com.example.digikala.ui.screens.home.HomeScreen
 import com.example.digikala.ui.screens.home.WebPageScreen
+import com.example.digikala.ui.screens.item_detail.AllCommentScreen
 import com.example.digikala.ui.screens.item_detail.ItemDescriptionScreen
 import com.example.digikala.ui.screens.item_detail.ItemDetailScreen
 import com.example.digikala.ui.screens.item_detail.ItemTechFeatureScreen
@@ -172,6 +173,24 @@ fun SetUpNavGraph(navController: NavHostController) {
                         )
                     }
                 }
+            }
+        }
+
+        composable(
+            route = Screen.AllComment.route + "/{itemId}",
+            arguments = listOf(
+                navArgument("itemId") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                },
+            )
+        ) {
+            it.arguments?.getString("itemId")?.let { itemId ->
+                AllCommentScreen(
+                    navController = navController,
+                    itemId = itemId
+                )
             }
         }
     }

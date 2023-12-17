@@ -89,7 +89,14 @@ fun ItemDetailScreen(
                             itemDetail!!.technicalFeatures
                         )
                     }
-                    item { ItemDetailComment(itemDetail!!.comments, itemDetail!!.commentCount) }
+                    item {
+                        ItemDetailComment(
+                            navController,
+                            itemDetail!!.comments,
+                            itemDetail!!.commentCount,
+                            itemDetail!!.id
+                        )
+                    }
                     item { ItemDetailSetComment(navController, itemDetail!!) }
                 }
             }

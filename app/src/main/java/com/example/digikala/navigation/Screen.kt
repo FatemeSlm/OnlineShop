@@ -13,6 +13,7 @@ sealed class Screen(val route: String) {
     data object ItemDescription : Screen(route = "item_description_screen")
     data object ItemTechFeature : Screen(route = "item_tech_feature_screen")
     data object NewComment : Screen(route = "new_comment_screen")
+    data object AllComment : Screen(route = "all_comment_screen")
 
 
     fun withArgs(vararg args: Any): String {
