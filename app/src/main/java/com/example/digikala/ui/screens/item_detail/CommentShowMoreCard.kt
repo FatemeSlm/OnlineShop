@@ -30,7 +30,8 @@ import com.example.digikala.ui.theme.spacing
 @Composable
 fun CommentShowMoreCard(
     navController: NavHostController,
-    itemId: String
+    itemId: String,
+    commentCount: Int
 ) {
 
     Column(
@@ -41,7 +42,7 @@ fun CommentShowMoreCard(
             .height(240.dp)
             .padding(vertical = MaterialTheme.spacing.medium)
             .clickable {
-                navController.navigate(Screen.AllComment.withArgs(itemId))
+                navController.navigate(Screen.AllComment.withArgs(itemId, commentCount))
             }
     ) {
 

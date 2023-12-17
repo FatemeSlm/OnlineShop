@@ -70,7 +70,7 @@ fun ItemDetailComment(
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier
                     .clickable {
-                        navController.navigate(Screen.AllComment.withArgs(itemId))
+                        navController.navigate(Screen.AllComment.withArgs(itemId, commentCount))
                     },
             )
         }
@@ -85,7 +85,7 @@ fun ItemDetailComment(
                 CommentCard(comment)
             }
             item {
-                CommentShowMoreCard(navController, itemId)
+                CommentShowMoreCard(navController, itemId, commentCount)
             }
 
         }

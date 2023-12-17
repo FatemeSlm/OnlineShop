@@ -1,6 +1,7 @@
 package com.example.digikala.repository
 
 import com.example.digikala.data.model.home.StoreProduct
+import com.example.digikala.data.model.item_detail.Comment
 import com.example.digikala.data.model.item_detail.ItemDetail
 import com.example.digikala.data.model.item_detail.NewComment
 import com.example.digikala.data.remote.BaseApiResponse
@@ -25,6 +26,16 @@ class ItemDetailRepository @Inject constructor(private val api: ItemDetailApiInt
         safeApiCall {
             api.setNewComment(newComment)
         }
+
+    suspend fun getAllItemComments(
+        itemId: String,
+        pageSize: Int,
+        pageNumber: Int
+    ): NetworkResult<List<Comment>> =
+        safeApiCall {
+            api.getAllItemComments(itemId, pageSize, pageNumber)
+        }
+
 
 }
 
