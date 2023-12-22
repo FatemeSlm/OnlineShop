@@ -87,6 +87,7 @@ fun CheckoutScreen(
     var orderId by remember {
         mutableStateOf("")
     }
+    var orderLoading by remember { mutableStateOf(false) }
     LaunchedEffect(Dispatchers.Main) {
         checkoutViewModel.orderResponse.collectLatest { orderResult ->
             when (orderResult) {
@@ -168,30 +169,36 @@ fun CheckoutScreen(
                 if (loading) {
                     Loading(height = 65.dp, isDark = true)
                 } else {
-                    CompleteThePurchase(
-                        price = cartDetail.payablePrice,
-                        shippingCost = shippingCost
-                    ) {
-                        if (address != null) {
-                            checkoutViewModel.addNewOrder(
-                                OrderRequest(
-                                    orderAddress = address!!.address,
-                                    orderProducts = cartItems,
-                                    orderTotalDiscount = cartDetail.totalDiscount,
-                                    orderTotalPrice = cartDetail.payablePrice + shippingCost,
-                                    orderUserName = address!!.name,
-                                    orderUserPhone = address!!.phone,
-                                    token = User_Token
+                    if (orderLoading) {
+                        Loading(height = 65.dp, isDark = true)
+                    } else {
+                        CompleteThePurchase(
+                            price = cartDetail.payablePrice,
+                            shippingCost = shippingCost
+                        ) {
+                            if (address != null) {
+                                orderLoading = true
+                                checkoutViewModel.addNewOrder(
+                                    OrderRequest(
+                                        orderAddress = address!!.address,
+                                        orderProducts = cartItems,
+                                        orderTotalDiscount = cartDetail.totalDiscount,
+                                        orderTotalPrice = cartDetail.payablePrice + shippingCost,
+                                        orderUserName = address!!.name,
+                                        orderUserPhone = address!!.phone,
+                                        token = User_Token
+                                    )
                                 )
-                            )
-                        } else {
-                            Toast.makeText(
-                                context,
-                                context.resources.getText(R.string.no_selected_address),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    context.resources.getText(R.string.no_selected_address),
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                         }
                     }
+
                 }
             }
         }
