@@ -11,7 +11,7 @@ data class ItemDetail(
     val category: String,
     val categoryId: String,
     val price: Long,
-    val description: String,
+    val description: String?,
     val discountPercent: Int,
     val star: Double,
     val starCount: Int,

@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.digikala.R
 import com.example.digikala.data.model.home.StoreProduct
 import com.example.digikala.data.remote.NetworkResult
@@ -33,6 +34,7 @@ import com.example.digikala.viewmodel.HomeViewModel
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun MostDiscount(
+    navController: NavHostController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     var loading by remember {
@@ -86,7 +88,7 @@ fun MostDiscount(
             ) {
 
                 for (item in mostDiscountList) {
-                    MostDiscountCard(item)
+                    MostDiscountCard(navController, item)
                 }
             }
         }

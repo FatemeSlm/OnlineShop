@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.example.digikala.R
 import com.example.digikala.data.model.cart.CartItem
 import com.example.digikala.data.model.cart.CartStatus
@@ -38,6 +39,7 @@ import com.example.digikala.viewmodel.CartViewModel
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SuggestedListSection(
+    navController: NavHostController,
     viewModel: CartViewModel = hiltViewModel()
 ) {
 
@@ -96,7 +98,7 @@ fun SuggestedListSection(
         ) {
 
             for (item in suggestedList) {
-                SuggestionItemCart(item) {
+                SuggestionItemCart(navController, item) {
                     viewModel.insertCartItem(
                         CartItem(
                             it.id,

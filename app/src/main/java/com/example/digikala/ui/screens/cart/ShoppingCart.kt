@@ -65,7 +65,7 @@ fun ShoppingCart(
                     if (currentCardList.isEmpty()) {
                         isCartEmpty = true
                         item { EmptyShoppingCart() }
-                        item { SuggestedListSection() }
+                        item { SuggestedListSection(navController) }
                     } else {
                         isCartEmpty = false
                         items(currentCardList) {

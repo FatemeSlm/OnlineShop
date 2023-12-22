@@ -1,6 +1,7 @@
 package com.example.digikala.ui.screens.home
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,7 +17,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
+import com.example.digikala.navigation.Screen
 import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkText
 import com.example.digikala.ui.theme.extraBoldNumber
@@ -24,6 +27,8 @@ import com.example.digikala.ui.theme.spacing
 
 @Composable
 fun ProductHorizontalItem(
+    navController: NavHostController,
+    itemId: String,
     name: String,
     imageUrl: String,
     id: String
@@ -31,7 +36,10 @@ fun ProductHorizontalItem(
     Row(
         modifier = Modifier
             .width(320.dp)
-            .padding(bottom = MaterialTheme.spacing.extraSmall),
+            .padding(bottom = MaterialTheme.spacing.extraSmall)
+            .clickable {
+                navController.navigate(Screen.ItemDetail.withArgs(itemId))
+            },
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {

@@ -1,6 +1,7 @@
 package com.example.digikala.ui.screens.checkout
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,9 +22,11 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.digikala.R
 import com.example.digikala.data.model.UserAddress
 import com.example.digikala.data.model.checkout.OrderRequest
 import com.example.digikala.data.remote.NetworkResult
@@ -45,6 +48,8 @@ fun CheckoutScreen(
     cartViewModel: CartViewModel = hiltViewModel(),
     checkoutViewModel: CheckoutViewModel = hiltViewModel()
 ) {
+
+    val context = LocalContext.current
 
     val cartDetail by cartViewModel.cartDetail.collectAsState()
     val cartItems by cartViewModel.cartItems.collectAsState()
@@ -167,17 +172,25 @@ fun CheckoutScreen(
                         price = cartDetail.payablePrice,
                         shippingCost = shippingCost
                     ) {
-                        checkoutViewModel.addNewOrder(
-                            OrderRequest(
-                                orderAddress = address!!.address,
-                                orderProducts = cartItems,
-                                orderTotalDiscount = cartDetail.totalDiscount,
-                                orderTotalPrice = cartDetail.payablePrice + shippingCost,
-                                orderUserName = address!!.name,
-                                orderUserPhone = address!!.phone,
-                                token = User_Token
+                        if (address != null) {
+                            checkoutViewModel.addNewOrder(
+                                OrderRequest(
+                                    orderAddress = address!!.address,
+                                    orderProducts = cartItems,
+                                    orderTotalDiscount = cartDetail.totalDiscount,
+                                    orderTotalPrice = cartDetail.payablePrice + shippingCost,
+                                    orderUserName = address!!.name,
+                                    orderUserPhone = address!!.phone,
+                                    token = User_Token
+                                )
                             )
-                        )
+                        } else {
+                            Toast.makeText(
+                                context,
+                                context.resources.getText(R.string.no_selected_address),
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }

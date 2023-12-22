@@ -97,6 +97,7 @@
     <string name="add_address">افزودن آدرس</string>
     <string name="change_address">تغییر یا ویرایش آدرس</string>
     <string name="no_address">آدرسی برای نمایش وجود ندارد</string>
+    <string name="no_selected_address">آدرس انتخاب نشده است</string>
     <string name="deliveryAndTimeMethod">شیوه و زمان ارسال</string>
     <string name="ready_to_send">آماده ارسال</string>
     <string name="choose_time">انتخاب زمان ارسال</string>
@@ -156,6 +157,7 @@
     <string name="comment_title_null">عنوان کامنت وارد نشده است!</string>
     <string name="comment_star_null">امتیاز(ستاره) کامنت وارد نشده است!</string>
     <string name="comment_body_null">متن کامنت وارد نشده است!</string>
+    <string name="added_to_cart">به سبد خرید اضافه شد!</string>
 
 
 </resources>

@@ -97,6 +97,7 @@
     <string name="add_address">Add address</string>
     <string name="change_address">Change or edit address</string>
     <string name="no_address">There is no address to display</string>
+    <string name="no_selected_address">The address is not selected</string>
     <string name="deliveryAndTimeMethod">Delivery method and time</string>
     <string name="ready_to_send">Ready to send</string>
     <string name="choose_time">Choose sending time</string>
@@ -152,7 +153,8 @@ After confirming the comment, go to the club missions page and get your points</
     <string name="comment_anonymously">Send a comment anonymously</string>
     <string name="comment_title_null">Comment title not entered!</string>
     <string name="comment_star_null">Comment rating (star) has not been entered!</string>
-    <string name="comment_body_null">Comment text is not entered!Q</string>
+    <string name="comment_body_null">Comment text is not entered!</string>
+    <string name="added_to_cart">Added to cart!</string>
 
 
 </resources>

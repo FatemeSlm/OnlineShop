@@ -81,7 +81,12 @@ fun ItemDetailScreen(
                     item { ItemDetailHeader(itemDetail!!) }
                     item { ItemDetailSelectColor(itemDetail!!.colors) }
                     item { ItemDetailSellerInfo() }
-                    item { ItemDetailSimilarItems(categoryId = itemDetail!!.categoryId) }
+                    item {
+                        ItemDetailSimilarItems(
+                            categoryId = itemDetail!!.categoryId,
+                            navController = navController
+                        )
+                    }
                     item {
                         ItemDetailDesc(
                             navController,

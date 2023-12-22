@@ -40,12 +40,17 @@ import com.google.gson.JsonObject
 @Composable
 fun ItemDetailDesc(
     navController: NavHostController,
-    description: String,
+    description: String?,
     techFeatures: JsonObject?
 ) {
     var techFeaturesString = ""
     techFeatures?.let {
         techFeaturesString = it.toString()
+    }
+
+    var desc = ""
+    description?.let {
+        desc = it
     }
 
     Divider(
@@ -101,7 +106,7 @@ fun ItemDetailDesc(
         }
     }
 
-    if (description.isNotBlank()) {
+    if (desc.isNotBlank()) {
 
         Spacer(
             modifier = Modifier
@@ -115,7 +120,7 @@ fun ItemDetailDesc(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    navController.navigate(Screen.ItemDescription.withArgs(description))
+                    navController.navigate(Screen.ItemDescription.withArgs(desc))
                 }
                 .padding(horizontal = MaterialTheme.spacing.medium),
             horizontalArrangement = Arrangement.SpaceBetween,

@@ -2,6 +2,7 @@ package com.example.digikala.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,9 +34,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.example.digikala.R
 import com.example.digikala.data.model.home.StoreProduct
+import com.example.digikala.navigation.Screen
 import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkRed
 import com.example.digikala.ui.theme.darkText
@@ -47,11 +50,15 @@ import com.example.digikala.util.DigitHelper
 
 @Composable
 fun MostDiscountCard(
+    navController: NavHostController,
     item: StoreProduct
 ) {
     Card(
         modifier = Modifier
-            .fillMaxWidth(0.5f),
+            .fillMaxWidth(0.5f)
+            .clickable {
+                navController.navigate(Screen.ItemDetail.withArgs(item.id))
+            },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 1.dp
         ),

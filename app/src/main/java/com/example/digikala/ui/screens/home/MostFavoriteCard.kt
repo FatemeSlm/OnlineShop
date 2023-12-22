@@ -2,6 +2,7 @@ package com.example.digikala.ui.screens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,9 +33,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.example.digikala.R
 import com.example.digikala.data.model.home.StoreProduct
+import com.example.digikala.navigation.Screen
 import com.example.digikala.ui.theme.darkCyan
 import com.example.digikala.ui.theme.darkRed
 import com.example.digikala.ui.theme.darkText
@@ -46,6 +49,7 @@ import com.example.digikala.util.DigitHelper
 
 @Composable
 fun MostFavoriteCard(
+    navController: NavHostController,
     item: StoreProduct
 ) {
     Column(
@@ -54,7 +58,10 @@ fun MostFavoriteCard(
             .background(if (isSystemInDarkTheme()) Color.DarkGray else Color.White)
             .padding(
                 vertical = MaterialTheme.spacing.semiLarge,
-            ),
+            )
+            .clickable {
+                navController.navigate(Screen.ItemDetail.withArgs(item.id))
+            },
     ) {
         Row {
             Column(

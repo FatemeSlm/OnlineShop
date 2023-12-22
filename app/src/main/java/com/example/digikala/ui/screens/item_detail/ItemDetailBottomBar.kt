@@ -1,5 +1,6 @@
 package com.example.digikala.ui.screens.item_detail
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,13 +25,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.digikala.R
+import com.example.digikala.data.model.cart.CartItem
+import com.example.digikala.data.model.cart.CartStatus
 import com.example.digikala.data.model.item_detail.ItemDetail
 import com.example.digikala.ui.theme.bottomBar
 import com.example.digikala.ui.theme.elevation
@@ -41,12 +46,16 @@ import com.example.digikala.util.Constants
 import com.example.digikala.util.DigitHelper.applyDiscount
 import com.example.digikala.util.DigitHelper.digitByLocate
 import com.example.digikala.util.DigitHelper.digitByLocateAndSeparator
+import com.example.digikala.viewmodel.CartViewModel
 
 @Composable
 fun ItemDetailBottomBar(
     itemDetail: ItemDetail,
-    navController: NavController
+    navController: NavController,
+    viewModel: CartViewModel = hiltViewModel()
 ) {
+
+    val context = LocalContext.current
 
     BottomNavigation(
         backgroundColor = MaterialTheme.colorScheme.bottomBar,
@@ -65,7 +74,25 @@ fun ItemDetailBottomBar(
         ) {
 
             Button(
-                onClick = {},
+                onClick = {
+                    viewModel.insertCartItem(
+                        CartItem(
+                            itemDetail.id,
+                            itemDetail.name,
+                            itemDetail.seller,
+                            itemDetail.price,
+                            itemDetail.discountPercent,
+                            itemDetail.imageSlider[0].image,
+                            1,
+                            CartStatus.CURRENT_CART
+                        )
+                    )
+                    Toast.makeText(
+                        context,
+                        context.getString(R.string.added_to_cart),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
                 colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colorScheme.red),
                 shape = MaterialTheme.roundedShape.small
             ) {
